@@ -25,15 +25,10 @@
     --border: #e2e8f0;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--body-bg);
-    color: #1e293b;
-    font-size: 15px;
-  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--body-bg); color: #1e293b; font-size: 15px; }
   h1,h2,h3,h4,h5,h6,.brand { font-family: 'Plus Jakarta Sans', sans-serif; }
 
-  /* NAVBAR */
+  /* ── NAVBAR ── */
   nav {
     background: var(--blue-900);
     padding: 0 2rem;
@@ -41,20 +36,52 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: sticky; top: 0; z-index: 100;
+    position: sticky; top: 0; z-index: 200;
     box-shadow: 0 2px 12px rgba(13,45,110,0.25);
   }
   .nav-brand {
     display: flex; align-items: center; gap: 10px;
     color: white; font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 800; font-size: 1.15rem; letter-spacing: -0.3px;
+    flex-shrink: 0;
   }
-  .nav-brand .icon {
-    width: 32px; height: 32px; background: var(--blue-600);
-    border-radius: 8px; display: flex; align-items: center; justify-content: center;
-    font-size: 1rem;
+
+  /* Desktop nav buttons */
+  .nav-actions {
+    display: flex; gap: 10px; align-items: center;
   }
-  .nav-actions { display: flex; gap: 10px; }
+
+  /* Hamburger — hidden on desktop */
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    line-height: 1;
+    transition: background 0.15s;
+  }
+  .hamburger:hover { background: rgba(255,255,255,0.12); }
+
+  /* Mobile dropdown menu */
+  .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0; right: 0;
+    background: var(--blue-900);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 12px 20px 16px;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 199;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+  }
+  .mobile-menu.open { display: flex; }
+
   .btn-outline {
     background: white; color: var(--blue-900);
     border: none; padding: 7px 18px; border-radius: 10px;
@@ -70,18 +97,18 @@
   }
   .btn-primary:hover { background: var(--blue-700); }
 
-  /* MAIN */
+  /* Mobile menu buttons full-width */
+  .mobile-menu .btn-outline,
+  .mobile-menu .btn-primary {
+    width: 100%; justify-content: center; padding: 11px 18px; font-size: 0.9rem;
+  }
+
+  /* ── MAIN ── */
   main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
 
-  /* PHOTO GRID */
   .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 200px 200px;
-    gap: 10px;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-bottom: 28px;
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px;
+    gap: 10px; border-radius: 20px; overflow: hidden; margin-bottom: 28px;
   }
   .photo-grid .main-photo {
     grid-row: 1 / 3;
@@ -98,8 +125,7 @@
     position: absolute; bottom: 16px; left: 16px; z-index: 2;
     background: rgba(0,0,0,0.55); color: white;
     font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
-    font-size: 0.85rem; padding: 5px 12px; border-radius: 8px;
-    backdrop-filter: blur(6px);
+    font-size: 0.85rem; padding: 5px 12px; border-radius: 8px; backdrop-filter: blur(6px);
   }
   .photo-mini {
     background: linear-gradient(135deg, #1240a0, #2563eb);
@@ -107,10 +133,9 @@
     font-size: 2rem; position: relative; overflow: hidden;
   }
   .photo-mini:nth-child(5) {
-    background: var(--blue-900);
-    font-size: 0.9rem; font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 700; color: white; cursor: pointer; gap: 4px;
-    flex-direction: column;
+    background: var(--blue-900); font-size: 0.9rem;
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: white;
+    cursor: pointer; gap: 4px; flex-direction: column;
   }
   .photo-mini::after {
     content: ''; position: absolute; inset: 0;
@@ -118,87 +143,37 @@
     opacity: 0.4;
   }
 
-  /* HEADER INFO */
-  .venue-header h1 {
-    font-size: 1.9rem; font-weight: 800; color: var(--blue-900);
-    letter-spacing: -0.5px; margin-bottom: 10px;
-  }
-  .venue-meta {
-    display: flex; flex-wrap: wrap; gap: 20px;
-    color: var(--gray-text); font-size: 0.9rem; margin-bottom: 16px;
-  }
+  .venue-header h1 { font-size: 1.9rem; font-weight: 800; color: var(--blue-900); letter-spacing: -0.5px; margin-bottom: 10px; }
+  .venue-meta { display: flex; flex-wrap: wrap; gap: 20px; color: var(--gray-text); font-size: 0.9rem; margin-bottom: 16px; }
   .venue-meta span { display: flex; align-items: center; gap: 5px; }
 
-  /* PRICING BANNER */
   .pricing-banner {
     background: var(--blue-50); border: 1px solid var(--blue-100);
     border-radius: 14px; padding: 14px 20px; margin: 16px 0 28px;
     display: flex; flex-wrap: wrap; gap: 6px 28px; align-items: center;
   }
-  .pricing-banner .rate {
-    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
-    color: var(--blue-900); font-size: 0.95rem;
-    display: flex; align-items: center; gap: 7px;
-  }
-  .pricing-banner .note {
-    color: var(--gray-text); font-size: 0.82rem; width: 100%;
-  }
+  .pricing-banner .rate { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--blue-900); font-size: 0.95rem; display: flex; align-items: center; gap: 7px; }
+  .pricing-banner .note { color: var(--gray-text); font-size: 0.82rem; width: 100%; }
 
-  /* BOOKING SECTION */
-  .booking-section {
-    display: grid; grid-template-columns: 280px 1fr; gap: 20px;
-    align-items: start;
-  }
+  .booking-section { display: grid; grid-template-columns: 280px 1fr; gap: 20px; align-items: start; }
 
-  /* CALENDAR */
   .calendar-card {
-    background: white; border-radius: 18px;
-    border: 1px solid var(--border);
-    box-shadow: 0 1px 8px rgba(0,0,0,0.05);
-    padding: 18px; position: sticky; top: 80px;
+    background: white; border-radius: 18px; border: 1px solid var(--border);
+    box-shadow: 0 1px 8px rgba(0,0,0,0.05); padding: 18px; position: sticky; top: 80px;
   }
-  .cal-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 14px;
-  }
-  .cal-header h3 {
-    font-size: 0.95rem; font-weight: 700; color: var(--blue-900);
-  }
-  .cal-nav {
-    background: none; border: 1px solid var(--border);
-    border-radius: 8px; width: 28px; height: 28px;
-    cursor: pointer; display: flex; align-items: center; justify-content: center;
-    font-size: 0.8rem; color: var(--blue-900); transition: all 0.15s;
-  }
+  .cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .cal-header h3 { font-size: 0.95rem; font-weight: 700; color: var(--blue-900); }
+  .cal-nav { background: none; border: 1px solid var(--border); border-radius: 8px; width: 28px; height: 28px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--blue-900); transition: all 0.15s; }
   .cal-nav:hover { background: var(--blue-50); }
   .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
-  .cal-dow {
-    text-align: center; font-size: 0.7rem; font-weight: 700;
-    color: var(--gray-text); padding: 4px 0;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-  }
-  .cal-day {
-    text-align: center; padding: 6px 0; font-size: 0.82rem;
-    border-radius: 8px; cursor: pointer; transition: all 0.15s;
-    color: #374151;
-  }
+  .cal-dow { text-align: center; font-size: 0.7rem; font-weight: 700; color: var(--gray-text); padding: 4px 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+  .cal-day { text-align: center; padding: 6px 0; font-size: 0.82rem; border-radius: 8px; cursor: pointer; transition: all 0.15s; color: #374151; }
   .cal-day:hover:not(.empty):not(.past) { background: var(--blue-50); color: var(--blue-700); }
-  .cal-day.today {
-    background: var(--blue-600); color: white;
-    font-weight: 700;
-  }
-  .cal-day.selected:not(.today) {
-    background: var(--blue-100); color: var(--blue-900); font-weight: 700;
-  }
+  .cal-day.today { background: var(--blue-600); color: white; font-weight: 700; }
+  .cal-day.selected:not(.today) { background: var(--blue-100); color: var(--blue-900); font-weight: 700; }
   .cal-day.past { color: #d1d5db; cursor: default; }
   .cal-day.empty { cursor: default; }
-  .cal-day.other-month { color: #d1d5db; }
-
-  /* LEGEND */
-  .legend {
-    margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border);
-    display: flex; flex-direction: column; gap: 7px;
-  }
+  .legend { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 7px; }
   .legend-title { font-size: 0.78rem; font-weight: 700; color: var(--gray-text); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
   .legend-item { display: flex; align-items: center; gap: 9px; font-size: 0.83rem; color: #374151; }
   .dot { width: 10px; height: 10px; border-radius: 50%; }
@@ -206,406 +181,127 @@
   .dot-gray { background: #9ca3af; }
   .dot-red { background: #ef4444; }
 
-  /* TABLE PANEL */
-  .table-panel {
-    background: white; border-radius: 18px;
-    border: 1px solid var(--border);
-    box-shadow: 0 1px 8px rgba(0,0,0,0.05);
-    overflow: hidden;
-  }
-  .table-header {
-    padding: 16px 20px; border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 10px;
-  }
-  .table-header h2 {
-    font-size: 1rem; font-weight: 700; color: var(--blue-900);
-    display: flex; align-items: center; gap: 8px;
-  }
-  .today-btn {
-    background: var(--blue-50); border: 1px solid var(--blue-100);
-    color: var(--blue-700); padding: 5px 14px; border-radius: 8px;
-    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;
-    font-size: 0.8rem; cursor: pointer; transition: all 0.15s;
-  }
+  .table-panel { background: white; border-radius: 18px; border: 1px solid var(--border); box-shadow: 0 1px 8px rgba(0,0,0,0.05); overflow: hidden; }
+  .table-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  .table-header h2 { font-size: 1rem; font-weight: 700; color: var(--blue-900); display: flex; align-items: center; gap: 8px; }
+  .today-btn { background: var(--blue-50); border: 1px solid var(--blue-100); color: var(--blue-700); padding: 5px 14px; border-radius: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: all 0.15s; }
   .today-btn:hover { background: var(--blue-100); }
 
-  table { width: 100%; border-collapse: collapse; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; min-width: 480px; }
   thead tr { background: var(--blue-50); }
-  thead th {
-    padding: 12px 16px; text-align: center;
-    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
-    color: var(--blue-900); font-size: 0.82rem; letter-spacing: 0.2px;
-  }
+  thead th { padding: 12px 16px; text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--blue-900); font-size: 0.82rem; }
   thead th:first-child { text-align: left; }
   tbody tr { border-top: 1px solid var(--border); transition: background 0.1s; }
   tbody tr:hover { background: #fafbff; }
   tbody td { padding: 10px 16px; font-size: 0.85rem; }
   .time-cell { font-weight: 600; color: #374151; white-space: nowrap; }
 
-  .slot-btn {
-    width: 100%; padding: 9px 10px; border-radius: 10px;
-    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
-    font-size: 0.8rem; border: none; cursor: pointer;
-    transition: all 0.18s; letter-spacing: 0.2px;
-  }
-  .slot-available {
-    background: var(--green-bg); color: var(--green-text);
-  }
+  .slot-btn { width: 100%; padding: 9px 10px; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.8rem; border: none; cursor: pointer; transition: all 0.18s; }
+  .slot-available { background: var(--green-bg); color: var(--green-text); }
   .slot-available:hover { transform: scale(1.03); box-shadow: 0 2px 8px rgba(21,128,61,0.15); }
-  .slot-booked {
-    background: var(--red-bg); color: var(--red-text); cursor: not-allowed;
-  }
-  .slot-pending {
-    background: var(--gray-bg); color: var(--gray-text); cursor: default;
-  }
+  .slot-booked { background: var(--red-bg); color: var(--red-text); cursor: not-allowed; }
+  .slot-pending { background: var(--gray-bg); color: var(--gray-text); cursor: default; }
 
-  /* POLICIES */
-  .policies-section {
-    margin-top: 32px; background: white;
-    border: 1px solid var(--border); border-radius: 18px;
-    padding: 24px; box-shadow: 0 1px 8px rgba(0,0,0,0.04);
-  }
-  .policies-section h2 {
-    font-size: 1.05rem; font-weight: 800; color: var(--blue-900);
-    margin-bottom: 18px;
-  }
-  .policies-grid {
-    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;
-  }
-  .policy-item h4 {
-    font-size: 0.75rem; font-weight: 700; color: var(--gray-text);
-    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;
-    display: flex; align-items: center; gap: 6px;
-  }
+  .policies-section { margin-top: 32px; background: white; border: 1px solid var(--border); border-radius: 18px; padding: 24px; box-shadow: 0 1px 8px rgba(0,0,0,0.04); }
+  .policies-section h2 { font-size: 1.05rem; font-weight: 800; color: var(--blue-900); margin-bottom: 18px; }
+  .policies-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .policy-item h4 { font-size: 0.75rem; font-weight: 700; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
   .policy-item p { font-size: 0.85rem; color: #374151; line-height: 1.6; }
-  .faq-item {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 9px 0; border-bottom: 1px solid var(--border);
-    font-size: 0.85rem; color: var(--blue-700); cursor: pointer;
-    transition: color 0.15s;
-  }
+  .faq-item { display: flex; align-items: center; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; color: var(--blue-700); cursor: pointer; }
   .faq-item:last-child { border-bottom: none; }
   .faq-item:hover { color: var(--blue-900); }
 
-  /* CTA BANNER */
-  .cta-banner {
-    margin-top: 28px;
-    background: var(--blue-50); border: 1px solid var(--blue-100);
-    border-radius: 18px; padding: 22px 28px;
-    display: flex; align-items: center; gap: 20px;
-    flex-wrap: wrap;
-  }
-  .cta-icon {
-    font-size: 2.8rem; flex-shrink: 0;
-  }
-  .cta-text h3 {
-    font-size: 1.05rem; font-weight: 800; color: var(--blue-900);
-  }
-  .cta-text p {
-    color: var(--gray-text); font-size: 0.85rem; margin-top: 3px;
-  }
-  .cta-btn {
-    margin-left: auto; background: var(--blue-600); color: white;
-    border: none; padding: 11px 22px; border-radius: 12px;
-    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
-    font-size: 0.88rem; cursor: pointer; transition: all 0.15s;
-    white-space: nowrap;
-  }
-  .cta-btn:hover { background: var(--blue-700); transform: translateY(-1px); }
-
-  /* FOOTER */
-  footer {
-    background: var(--blue-900); color: white;
-    padding: 40px 0 0;
-    margin-top: 60px;
-  }
-  .footer-inner {
-    max-width: 1100px; margin: 0 auto; padding: 0 20px;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
-    padding-bottom: 32px;
-  }
-  .footer-brand h2 {
-    font-size: 1.2rem; font-weight: 800; margin-bottom: 6px;
-  }
+  footer { background: var(--blue-900); color: white; padding: 40px 0 0; margin-top: 60px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-brand h2 { font-size: 1.2rem; font-weight: 800; margin-bottom: 6px; }
   .footer-brand p { color: #93c5fd; font-size: 0.88rem; margin-bottom: 14px; }
   .social-links { display: flex; gap: 10px; }
-  .social-link {
-    width: 34px; height: 34px; background: rgba(255,255,255,0.12);
-    border-radius: 8px; display: flex; align-items: center; justify-content: center;
-    cursor: pointer; font-size: 0.9rem; transition: background 0.15s;
-    text-decoration: none; color: white;
-  }
+  .social-link { width: 34px; height: 34px; background: rgba(255,255,255,0.12); border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.9rem; color: white; text-decoration: none; }
   .social-link:hover { background: rgba(255,255,255,0.22); }
   .footer-links { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
-  .footer-links a {
-    color: #93c5fd; font-size: 0.88rem; text-decoration: none; transition: color 0.15s;
-  }
+  .footer-links a { color: #93c5fd; font-size: 0.88rem; text-decoration: none; }
   .footer-links a:hover { color: white; }
-  .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.12);
-    text-align: center; padding: 14px 20px;
-    font-size: 0.8rem; color: #93c5fd;
-  }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.12); text-align: center; padding: 14px 20px; font-size: 0.8rem; color: #93c5fd; }
 
   /* MODAL */
-  .modal-overlay {
-    display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,0.5); z-index: 1000;
-    align-items: center; justify-content: center;
-    backdrop-filter: blur(4px);
-  }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
   .modal-overlay.open { display: flex; }
-  .modal {
-    background: white; border-radius: 20px;
-    width: 90%; max-width: 440px; padding: 28px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-    animation: slideUp 0.2s ease;
-  }
-  @keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-  .modal h2 {
-    font-size: 1.2rem; font-weight: 800; color: var(--blue-900);
-    margin-bottom: 6px;
-  }
-  .modal .slot-info {
-    background: var(--blue-50); border-radius: 10px;
-    padding: 12px 14px; margin: 14px 0;
-    font-size: 0.88rem; color: var(--blue-900);
-    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;
-  }
+  .modal { background: white; border-radius: 20px; width: 90%; max-width: 440px; padding: 28px; box-shadow: 0 20px 60px rgba(0,0,0,0.2); animation: slideUp 0.2s ease; }
+  @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  .modal h2 { font-size: 1.2rem; font-weight: 800; color: var(--blue-900); margin-bottom: 6px; }
+  .modal .slot-info { background: var(--blue-50); border-radius: 10px; padding: 12px 14px; margin: 14px 0; font-size: 0.88rem; color: var(--blue-900); font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; }
   .form-group { margin-bottom: 14px; }
-  .form-group label {
-    display: block; font-size: 0.78rem; font-weight: 700;
-    color: var(--gray-text); text-transform: uppercase;
-    letter-spacing: 0.5px; margin-bottom: 5px;
-  }
-  .form-group input, .form-group select {
-    width: 100%; padding: 10px 13px;
-    border: 1px solid var(--border); border-radius: 10px;
-    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
-    color: #1e293b; transition: border 0.15s; outline: none;
-    background: white;
-  }
-  .form-group input:focus, .form-group select:focus {
-    border-color: var(--blue-600);
-    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
-  }
+  .form-group label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+  .form-group input, .form-group select { width: 100%; padding: 10px 13px; border: 1px solid var(--border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: #1e293b; outline: none; background: white; }
+  .form-group input:focus, .form-group select:focus { border-color: var(--blue-600); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
-  .btn-cancel {
-    flex: 1; padding: 11px; border-radius: 10px;
-    background: var(--gray-bg); border: none;
-    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
-    font-size: 0.88rem; color: var(--gray-text); cursor: pointer;
-    transition: all 0.15s;
-  }
+  .btn-cancel { flex: 1; padding: 11px; border-radius: 10px; background: var(--gray-bg); border: none; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--gray-text); cursor: pointer; }
   .btn-cancel:hover { background: #d1d5db; }
-  .btn-confirm {
-    flex: 2; padding: 11px; border-radius: 10px;
-    background: var(--blue-600); border: none; color: white;
-    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
-    font-size: 0.88rem; cursor: pointer; transition: all 0.15s;
-  }
+  .btn-confirm { flex: 2; padding: 11px; border-radius: 10px; background: var(--blue-600); border: none; color: white; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; cursor: pointer; }
   .btn-confirm:hover { background: var(--blue-700); }
 
-  /* TOAST */
-  .toast {
-    position: fixed; bottom: 24px; right: 24px;
-    background: #1e293b; color: white;
-    padding: 13px 20px; border-radius: 12px;
-    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;
-    font-size: 0.88rem; z-index: 9999;
-    transform: translateY(80px); opacity: 0;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    display: flex; align-items: center; gap: 10px;
-  }
+  .toast { position: fixed; bottom: 24px; right: 24px; background: #1e293b; color: white; padding: 13px 20px; border-radius: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 0.88rem; z-index: 9999; transform: translateY(80px); opacity: 0; transition: all 0.3s ease; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
   .toast.show { transform: translateY(0); opacity: 1; }
 
- /* =======================
-   📱 MOBILE RESPONSIVE FIX (UPGRADED)
-======================= */
-@media (max-width: 768px) {
-
-  .booking-section {
-    grid-template-columns: 1fr;
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 1rem; position: relative; }
+    .nav-actions { display: none; }
+    .hamburger { display: flex; align-items: center; justify-content: center; }
+    .booking-section { grid-template-columns: 1fr; }
+    .photo-grid { grid-template-columns: 1fr; grid-template-rows: 220px; }
+    .photo-grid .main-photo { grid-row: auto; }
+    .photo-mini { display: none; }
+    .policies-grid { grid-template-columns: 1fr; gap: 12px; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-links { align-items: flex-start; }
+    .venue-header h1 { font-size: 1.35rem; }
+    .calendar-card { position: static; }
   }
 
-  .photo-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: 220px;
+  @media (max-width: 480px) {
+    main { padding: 12px 12px 40px; }
+    .venue-header h1 { font-size: 1.15rem; }
+    .modal { width: 95%; padding: 18px; }
+    .form-row { grid-template-columns: 1fr; }
+    .policies-section { padding: 16px; }
   }
-
-  .photo-grid .main-photo {
-    grid-row: auto;
-  }
-
-  /* FIX TABLE OVERFLOW */
-  .table-panel {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  table {
-    min-width: 650px;
-  }
-
-  thead th,
-  tbody td {
-    font-size: 0.8rem;
-    padding: 8px;
-  }
-
-  .slot-btn {
-    font-size: 0.75rem;
-    padding: 7px;
-  }
-
-  .policies-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .footer-inner {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .nav-actions {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .calendar-card {
-    position: relative;
-    top: 0;
-  }
-
-  .venue-header h1 {
-    font-size: 1.25rem;
-  }
-
-  .modal {
-    width: 95%;
-    border-radius: 12px;
-  }
-}
-
-/* =======================
-   📱 SMALL PHONE FIX (NEW)
-======================= */
-@media (max-width: 480px) {
-
-  main {
-    padding: 12px;
-  }
-
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .nav-actions {
-    width: 100%;
-  }
-
-  .btn-outline,
-  .btn-primary {
-    width: 100%;
-    text-align: center;
-  }
-
-  .venue-header h1 {
-    font-size: 1.1rem;
-  }
-
-  .slot-btn {
-    font-size: 0.7rem;
-  }
-
-  .policies-section {
-    padding: 14px;
-  }
-
-  .modal {
-    padding: 16px;
-  }
-
-  /* HAMBURGER BUTTON (hidden on desktop) */
-.hamburger {
-  display: none;
-  font-size: 1.6rem;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-}
-
-/* MOBILE MENU BEHAVIOR */
-@media (max-width: 768px) {
-
-  .hamburger {
-    display: block;
-  }
-
-  .nav-actions {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    background: var(--blue-900);
-    padding: 10px 0;
-  }
-
-  .nav-actions.show {
-    display: flex;
-  }
-
-  .nav-actions button {
-    width: 100%;
-    text-align: left;
-    border-radius: 0;
-    padding: 12px 16px;
-  }
-}
-}
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
   <div class="nav-brand">🏓 Demo-BookPickleBall</div>
 
-  <!-- HAMBURGER -->
-  <button class="hamburger" onclick="toggleMenu()">☰</button>
-
-  <div class="nav-actions" id="navActions">
+  <!-- Desktop buttons -->
+  <div class="nav-actions" id="desktopNav">
     <button class="btn-outline">Login</button>
     <button class="btn-primary">My Bookings</button>
   </div>
+
+  <!-- Hamburger — mobile only, right corner -->
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" onclick="toggleMenu()">
+    <span id="hamburgerIcon">☰</span>
+  </button>
 </nav>
 
-
+<!-- Mobile dropdown (outside nav so it can drop below) -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="btn-outline" onclick="toggleMenu()">Login</button>
+  <button class="btn-primary" onclick="toggleMenu()">My Bookings</button>
+</div>
 
 <main>
-  <!-- PHOTO GRID -->
   <div class="photo-grid">
-    <div class="main-photo">
-      <span class="court-label">📸 Court View</span>
-    </div>
+    <div class="main-photo"><span class="court-label">📸 Court View</span></div>
     <div class="photo-mini"></div>
     <div class="photo-mini"></div>
     <div class="photo-mini"></div>
-    <div class="photo-mini" onclick="showToast('🖼️ Gallery coming soon!')">
-      <span>+</span>
-      <span>Show all photos</span>
-    </div>
+    <div class="photo-mini" onclick="showToast('🖼️ Gallery coming soon!')"><span>+</span><span>Show all photos</span></div>
   </div>
 
-  <!-- VENUE HEADER -->
   <div class="venue-header">
     <h1>Book a Court at Demo-BookPickleBall</h1>
     <div class="venue-meta">
@@ -615,17 +311,13 @@
     </div>
   </div>
 
-  <!-- PRICING BANNER -->
   <div class="pricing-banner">
     <div class="rate">☀️ Day Rate: ₱450 / hour (8AM – 4PM)</div>
     <div class="rate">🌙 Night Rate: ₱500 / hour (4PM – 8AM)</div>
     <div class="note">ℹ Final rates may change based on time slot and day.</div>
   </div>
 
-  <!-- BOOKING SECTION -->
   <div class="booking-section">
-
-    <!-- CALENDAR -->
     <div>
       <div class="calendar-card">
         <div class="cal-header">
@@ -634,7 +326,6 @@
           <button class="cal-nav" id="nextBtn">&#8250;</button>
         </div>
         <div class="cal-grid" id="calGrid"></div>
-
         <div class="legend">
           <div class="legend-title">Legend</div>
           <div class="legend-item"><div class="dot dot-green"></div> Available</div>
@@ -644,27 +335,26 @@
       </div>
     </div>
 
-    <!-- TABLE PANEL -->
     <div class="table-panel">
       <div class="table-header">
         <h2>📅 <span id="selectedDateLabel"></span></h2>
         <button class="today-btn" onclick="goToToday()">Today</button>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Time</th>
-            <th>🏟 Court One</th>
-            <th>🏟 Court Two</th>
-          </tr>
-        </thead>
-        <tbody id="slotBody"></tbody>
-      </table>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>🏟 Court One</th>
+              <th>🏟 Court Two</th>
+            </tr>
+          </thead>
+          <tbody id="slotBody"></tbody>
+        </table>
+      </div>
     </div>
-
   </div>
 
-  <!-- POLICIES -->
   <div class="policies-section">
     <h2>Operating Hours &amp; Policies</h2>
     <div class="policies-grid">
@@ -686,52 +376,39 @@
       </div>
     </div>
   </div>
+</main>
 
-
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
       <h2>Demo-BookPickleBall</h2>
       <p>Easy. Fast. Reliable Court Booking.</p>
       <div class="social-links">
-        <a class="social-link" href="#" onclick="return false">f</a>
-        <a class="social-link" href="#" onclick="return false">ig</a>
-        <a class="social-link" href="#" onclick="return false">tt</a>
+        <a class="social-link" href="#">f</a>
+        <a class="social-link" href="#">ig</a>
+        <a class="social-link" href="#">tt</a>
       </div>
     </div>
     <div class="footer-links">
-      <a href="#" onclick="return false">About Us</a>
-      <a href="#" onclick="return false">Privacy Policy</a>
-      <a href="#" onclick="return false">Terms of Service</a>
-      <a href="#" onclick="return false">Contact Us</a>
+      <a href="#">About Us</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Contact Us</a>
     </div>
   </div>
-  <div class="footer-bottom">
-    © 2026 Demo-BookPickleBall. All rights reserved. Developer: HeoIsCode
-  </div>
+  <div class="footer-bottom">© 2026 Demo-BookPickleBall. All rights reserved. Developer: HeoIsCode</div>
 </footer>
 
-<!-- BOOKING MODAL -->
 <div class="modal-overlay" id="bookingModal">
   <div class="modal">
     <h2>🏓 Book a Court</h2>
     <p style="font-size:0.85rem;color:#6b7280;">Fill in your details to reserve this slot.</p>
     <div class="slot-info" id="modalSlotInfo"></div>
     <div class="form-row">
-      <div class="form-group">
-        <label>First Name</label>
-        <input type="text" id="firstName" placeholder="Juan"/>
-      </div>
-      <div class="form-group">
-        <label>Last Name</label>
-        <input type="text" id="lastName" placeholder="dela Cruz"/>
-      </div>
+      <div class="form-group"><label>First Name</label><input type="text" id="firstName" placeholder="Juan"/></div>
+      <div class="form-group"><label>Last Name</label><input type="text" id="lastName" placeholder="dela Cruz"/></div>
     </div>
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" id="email" placeholder="juan@email.com"/>
-    </div>
+    <div class="form-group"><label>Email</label><input type="email" id="email" placeholder="juan@email.com"/></div>
     <div class="form-group">
       <label>Payment Method</label>
       <select id="payment">
@@ -750,56 +427,26 @@
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────
-const SLOTS = [
-  '12:00 AM - 1:00 AM',
-  '1:00 AM - 2:00 AM',
-  '2:00 AM - 3:00 AM',
-  '3:00 AM - 4:00 AM',
-  '4:00 AM - 5:00 AM',
-  '5:00 AM - 6:00 AM',
-  '6:00 AM - 7:00 AM',
-  '7:00 AM - 8:00 AM',
-  '8:00 AM - 9:00 AM',
-  '9:00 AM - 10:00 AM',
-  '10:00 AM - 11:00 AM',
-  '11:00 AM - 12:00 PM',
-  '12:00 PM - 1:00 PM',
-  '1:00 PM - 2:00 PM',
-  '2:00 PM - 3:00 PM',
-  '3:00 PM - 4:00 PM',
-  '4:00 PM - 5:00 PM',
-  '5:00 PM - 6:00 PM',
-  '6:00 PM - 7:00 PM',
-  '7:00 PM - 8:00 PM',
-  '8:00 PM - 9:00 PM',
-  '9:00 PM - 10:00 PM',
-  '10:00 PM - 11:00 PM',
-  '11:00 PM - 12:00 AM'
-];;
-
+const SLOTS = ['12:00 AM - 1:00 AM','1:00 AM - 2:00 AM','2:00 AM - 3:00 AM','3:00 AM - 4:00 AM','4:00 AM - 5:00 AM','5:00 AM - 6:00 AM','6:00 AM - 7:00 AM','7:00 AM - 8:00 AM','8:00 AM - 9:00 AM','9:00 AM - 10:00 AM','10:00 AM - 11:00 AM','11:00 AM - 12:00 PM','12:00 PM - 1:00 PM','1:00 PM - 2:00 PM','2:00 PM - 3:00 PM','3:00 PM - 4:00 PM','4:00 PM - 5:00 PM','5:00 PM - 6:00 PM','6:00 PM - 7:00 PM','7:00 PM - 8:00 PM','8:00 PM - 9:00 PM','9:00 PM - 10:00 PM','10:00 PM - 11:00 PM','11:00 PM - 12:00 AM'];
 const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
-// seed some random statuses (in real app: fetched from DB)
 const bookingData = {};
 let pendingModal = null;
+const today = new Date();
+let viewYear = today.getFullYear();
+let viewMonth = today.getMonth();
+let selectedDate = new Date(today);
+let menuOpen = false;
 
-function dateKey(d) {
-  return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
-}
-function slotKey(dk, slot, court) {
-  return `${dk}|${slot}|${court}`;
-}
-
+function dateKey(d) { return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`; }
+function slotKey(dk, slot, court) { return `${dk}|${slot}|${court}`; }
 function getStatus(dk, slot, court) {
   const k = slotKey(dk, slot, court);
   if (bookingData[k]) return bookingData[k];
-  // deterministic random seed
   const hash = (dk + slot + court).split('').reduce((a,c)=>a+c.charCodeAt(0),0);
   const r = hash % 10;
   if (r < 6) return 'available';
@@ -807,28 +454,39 @@ function getStatus(dk, slot, court) {
   return 'pending';
 }
 
-// ── CALENDAR ──────────────────────────────────────────────────────────
-const today = new Date();
-let viewYear = today.getFullYear();
-let viewMonth = today.getMonth();
-let selectedDate = new Date(today);
+/* ── HAMBURGER ── */
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('hamburgerBtn');
+  const icon = document.getElementById('hamburgerIcon');
+  menu.classList.toggle('open', menuOpen);
+  btn.setAttribute('aria-expanded', menuOpen);
+  icon.textContent = menuOpen ? '✕' : '☰';
+}
 
+/* Close menu when clicking outside */
+document.addEventListener('click', function(e) {
+  if (!menuOpen) return;
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('hamburgerBtn');
+  if (!menu.contains(e.target) && !btn.contains(e.target)) {
+    menuOpen = false;
+    menu.classList.remove('open');
+    btn.setAttribute('aria-expanded', false);
+    document.getElementById('hamburgerIcon').textContent = '☰';
+  }
+});
+
+/* ── CALENDAR ── */
 function renderCalendar() {
   const grid = document.getElementById('calGrid');
   document.getElementById('calMonthYear').textContent = `${MONTHS[viewMonth]} ${viewYear}`;
   grid.innerHTML = '';
-  DAYS.forEach(d => {
-    const el = document.createElement('div');
-    el.className = 'cal-dow'; el.textContent = d;
-    grid.appendChild(el);
-  });
+  DAYS.forEach(d => { const el = document.createElement('div'); el.className = 'cal-dow'; el.textContent = d; grid.appendChild(el); });
   const first = new Date(viewYear, viewMonth, 1).getDay();
   const days = new Date(viewYear, viewMonth + 1, 0).getDate();
-  for (let i = 0; i < first; i++) {
-    const el = document.createElement('div');
-    el.className = 'cal-day empty';
-    grid.appendChild(el);
-  }
+  for (let i = 0; i < first; i++) { const el = document.createElement('div'); el.className = 'cal-day empty'; grid.appendChild(el); }
   for (let d = 1; d <= days; d++) {
     const el = document.createElement('div');
     el.textContent = d;
@@ -837,113 +495,65 @@ function renderCalendar() {
     const isToday = d === today.getDate() && viewMonth === today.getMonth() && viewYear === today.getFullYear();
     const isSel = d === selectedDate.getDate() && viewMonth === selectedDate.getMonth() && viewYear === selectedDate.getFullYear();
     el.className = 'cal-day' + (isPast ? ' past' : '') + (isToday ? ' today' : '') + (isSel && !isToday ? ' selected' : '');
-    if (!isPast) {
-      el.addEventListener('click', () => {
-        selectedDate = new Date(viewYear, viewMonth, d);
-        renderCalendar();
-        renderTable();
-      });
-    }
+    if (!isPast) el.addEventListener('click', () => { selectedDate = new Date(viewYear, viewMonth, d); renderCalendar(); renderTable(); });
     grid.appendChild(el);
   }
 }
+document.getElementById('prevBtn').addEventListener('click', () => { viewMonth--; if (viewMonth < 0) { viewMonth = 11; viewYear--; } renderCalendar(); });
+document.getElementById('nextBtn').addEventListener('click', () => { viewMonth++; if (viewMonth > 11) { viewMonth = 0; viewYear++; } renderCalendar(); });
+function goToToday() { selectedDate = new Date(today); viewYear = today.getFullYear(); viewMonth = today.getMonth(); renderCalendar(); renderTable(); }
 
-document.getElementById('prevBtn').addEventListener('click', () => {
-  viewMonth--; if (viewMonth < 0) { viewMonth = 11; viewYear--; }
-  renderCalendar();
-});
-document.getElementById('nextBtn').addEventListener('click', () => {
-  viewMonth++; if (viewMonth > 11) { viewMonth = 0; viewYear++; }
-  renderCalendar();
-});
-
-function goToToday() {
-  selectedDate = new Date(today);
-  viewYear = today.getFullYear();
-  viewMonth = today.getMonth();
-  renderCalendar(); renderTable();
-}
-
-// ── TABLE ─────────────────────────────────────────────────────────────
+/* ── TABLE ── */
 function renderTable() {
   const dk = dateKey(selectedDate);
-  const opts = { weekday:'short', month:'short', day:'numeric', year:'numeric' };
-  document.getElementById('selectedDateLabel').textContent = selectedDate.toLocaleDateString('en-US', opts);
+  document.getElementById('selectedDateLabel').textContent = selectedDate.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric', year:'numeric' });
   const body = document.getElementById('slotBody');
   body.innerHTML = '';
   SLOTS.forEach(slot => {
     const tr = document.createElement('tr');
     const s1 = getStatus(dk, slot, 'c1');
     const s2 = getStatus(dk, slot, 'c2');
-    tr.innerHTML = `
-      <td class="time-cell">${slot}</td>
-      <td style="padding:8px 16px;">${slotBtn(s1, slot, 'Court One', 'c1', dk)}</td>
-      <td style="padding:8px 16px;">${slotBtn(s2, slot, 'Court Two', 'c2', dk)}</td>
-    `;
+    tr.innerHTML = `<td class="time-cell">${slot}</td><td style="padding:8px 16px;">${slotBtn(s1, slot, 'Court One', 'c1', dk)}</td><td style="padding:8px 16px;">${slotBtn(s2, slot, 'Court Two', 'c2', dk)}</td>`;
     body.appendChild(tr);
   });
 }
-
 function slotBtn(status, slot, court, courtKey, dk) {
-  if (status === 'available') {
-    return `<button class="slot-btn slot-available" onclick="openModal('${slot}','${court}','${courtKey}','${dk}')">Available</button>`;
-  } else if (status === 'booked') {
-    return `<button class="slot-btn slot-booked">Booked</button>`;
-  } else {
-    return `<button class="slot-btn slot-pending">Pending</button>`;
-  }
+  if (status === 'available') return `<button class="slot-btn slot-available" onclick="openModal('${slot}','${court}','${courtKey}','${dk}')">Available</button>`;
+  if (status === 'booked') return `<button class="slot-btn slot-booked">Booked</button>`;
+  return `<button class="slot-btn slot-pending">Pending</button>`;
 }
 
-// ── MODAL ─────────────────────────────────────────────────────────────
+/* ── MODAL ── */
 function openModal(slot, court, courtKey, dk) {
-  const rate = slot.includes('AM') || slot.startsWith('1:') || slot.startsWith('2:') || slot.startsWith('3:') ? '₱450' : '₱500';
-  document.getElementById('modalSlotInfo').innerHTML =
-    `📅 ${selectedDate.toDateString()}<br>🕒 ${slot}<br>🏟 ${court} &nbsp;|&nbsp; 💰 ${rate}/hour`;
+  const rate = slot.includes('AM') ? '₱450' : '₱500';
+  document.getElementById('modalSlotInfo').innerHTML = `📅 ${selectedDate.toDateString()}<br>🕒 ${slot}<br>🏟 ${court} &nbsp;|&nbsp; 💰 ${rate}/hour`;
   pendingModal = { slot, court, courtKey, dk };
   document.getElementById('bookingModal').classList.add('open');
 }
-
-function closeModal() {
-  document.getElementById('bookingModal').classList.remove('open');
-  pendingModal = null;
-}
-
+function closeModal() { document.getElementById('bookingModal').classList.remove('open'); pendingModal = null; }
 function confirmBooking() {
   const fn = document.getElementById('firstName').value.trim();
   const ln = document.getElementById('lastName').value.trim();
   const em = document.getElementById('email').value.trim();
   const py = document.getElementById('payment').value;
-  if (!fn || !ln || !em || !py) {
-    showToast('⚠️ Please fill in all fields!'); return;
-  }
+  if (!fn || !ln || !em || !py) { showToast('⚠️ Please fill in all fields!'); return; }
   if (!em.includes('@')) { showToast('⚠️ Please enter a valid email!'); return; }
-  if (pendingModal) {
-    bookingData[slotKey(pendingModal.dk, pendingModal.slot, pendingModal.courtKey)] = 'pending';
-  }
-  closeModal();
-  renderTable();
-  document.getElementById('firstName').value = '';
-  document.getElementById('lastName').value = '';
-  document.getElementById('email').value = '';
-  document.getElementById('payment').value = '';
+  if (pendingModal) bookingData[slotKey(pendingModal.dk, pendingModal.slot, pendingModal.courtKey)] = 'pending';
+  closeModal(); renderTable();
+  ['firstName','lastName','email','payment'].forEach(id => document.getElementById(id).value = '');
   showToast('✅ Booking submitted! Awaiting payment confirmation.');
 }
+document.getElementById('bookingModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 
-document.getElementById('bookingModal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
-
-// ── TOAST ─────────────────────────────────────────────────────────────
+/* ── TOAST ── */
 let toastTimer;
 function showToast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  t.textContent = msg; t.classList.add('show');
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
 }
 
-// ── INIT ──────────────────────────────────────────────────────────────
 renderCalendar();
 renderTable();
 </script>
