@@ -1,678 +1,678 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Demo-BookPickleBall</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-<style>
-  :root {
-    --pink-900: #1a0010;
-    --pink-800: #3d0020;
-    --pink-700: #6d0035;
-    --pink-600: #c0006a;
-    --pink-500: #e91e8c;
-    --pink-400: #f472b6;
-    --pink-100: #fce7f3;
-    --pink-50: #fdf2f8;
-    --black: #0a0a0a;
-    --dark-card: #1a1a1a;
-    --dark-border: #2a2a2a;
-    --green-bg: #052e16;
-    --green-text: #4ade80;
-    --green-border: #166534;
-    --red-bg: #2d0a0a;
-    --red-text: #f87171;
-    --gray-bg: #1f1f1f;
-    --gray-text: #6b7280;
-    --white: #ffffff;
-    --body-bg: #0d0d0d;
-    --border: #2a2a2a;
-    --selected-bg: #3d0020;
-    --selected-border: #e91e8c;
-    --selected-text: #f9a8d4;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--body-bg); color: #e5e7eb; font-size: 15px; }
-  h1,h2,h3,h4,h5,h6,.brand { font-family: 'Plus Jakarta Sans', sans-serif; }
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dink Society - Pickleball</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --pink-900: #1a0010;
+      --pink-800: #3d0020;
+      --pink-700: #6d0035;
+      --pink-600: #c0006a;
+      --pink-500: #e91e8c;
+      --pink-400: #f472b6;
+      --pink-100: #fce7f3;
+      --pink-50: #fdf2f8;
+      --black: #0a0a0a;
+      --dark-card: #1a1a1a;
+      --dark-border: #2a2a2a;
+      --green-bg: #052e16;
+      --green-text: #4ade80;
+      --green-border: #166534;
+      --red-bg: #2d0a0a;
+      --red-text: #f87171;
+      --gray-bg: #1f1f1f;
+      --gray-text: #6b7280;
+      --white: #ffffff;
+      --body-bg: #0d0d0d;
+      --border: #2a2a2a;
+      --selected-bg: #3d0020;
+      --selected-border: #e91e8c;
+      --selected-text: #f9a8d4;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--body-bg); color: #e5e7eb; font-size: 15px; }
+    h1,h2,h3,h4,h5,h6,.brand { font-family: 'Plus Jakarta Sans', sans-serif; }
 
-  nav {
-    background: #111;
-    border-bottom: 1px solid #222;
-    padding: 0 2rem;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky; top: 0; z-index: 200;
-    box-shadow: 0 2px 20px rgba(233,30,140,0.15);
-  }
-  .nav-brand { display: flex; align-items: center; gap: 10px; color: white; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.15rem; letter-spacing: -0.3px; }
-  .nav-brand span { color: var(--pink-500); }
-  .nav-actions { display: flex; gap: 10px; align-items: center; }
-  .hamburger { display: none; background: none; border: none; color: white; cursor: pointer; padding: 6px; border-radius: 8px; font-size: 1.5rem; line-height: 1; transition: background 0.15s; }
-  .hamburger:hover { background: rgba(233,30,140,0.15); }
-  .mobile-menu { display: none; position: absolute; top: 60px; left: 0; right: 0; background: #111; border-top: 1px solid #222; padding: 12px 20px 16px; flex-direction: column; gap: 10px; z-index: 199; box-shadow: 0 6px 24px rgba(0,0,0,0.5); }
-  .mobile-menu.open { display: flex; }
-  .btn-outline { background: transparent; color: var(--pink-400); border: 1px solid var(--pink-600); padding: 7px 18px; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.15s; }
-  .btn-outline:hover { background: rgba(233,30,140,0.1); }
-  .btn-primary { background: var(--pink-600); color: white; border: none; padding: 7px 18px; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; gap: 6px; }
-  .btn-primary:hover { background: var(--pink-500); box-shadow: 0 0 16px rgba(233,30,140,0.4); }
-  .mobile-menu .btn-outline, .mobile-menu .btn-primary { width: 100%; justify-content: center; padding: 11px 18px; font-size: 0.9rem; }
+    nav {
+      background: #111;
+      border-bottom: 1px solid #222;
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky; top: 0; z-index: 200;
+      box-shadow: 0 2px 20px rgba(233,30,140,0.15);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; color: white; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.15rem; letter-spacing: -0.3px; }
+    .nav-brand span { color: var(--pink-500); }
+    .nav-actions { display: flex; gap: 10px; align-items: center; }
+    .hamburger { display: none; background: none; border: none; color: white; cursor: pointer; padding: 6px; border-radius: 8px; font-size: 1.5rem; line-height: 1; transition: background 0.15s; }
+    .hamburger:hover { background: rgba(233,30,140,0.15); }
+    .mobile-menu { display: none; position: absolute; top: 60px; left: 0; right: 0; background: #111; border-top: 1px solid #222; padding: 12px 20px 16px; flex-direction: column; gap: 10px; z-index: 199; box-shadow: 0 6px 24px rgba(0,0,0,0.5); }
+    .mobile-menu.open { display: flex; }
+    .btn-outline { background: transparent; color: var(--pink-400); border: 1px solid var(--pink-600); padding: 7px 18px; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.15s; }
+    .btn-outline:hover { background: rgba(233,30,140,0.1); }
+    .btn-primary { background: var(--pink-600); color: white; border: none; padding: 7px 18px; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; gap: 6px; }
+    .btn-primary:hover { background: var(--pink-500); box-shadow: 0 0 16px rgba(233,30,140,0.4); }
+    .mobile-menu .btn-outline, .mobile-menu .btn-primary { width: 100%; justify-content: center; padding: 11px 18px; font-size: 0.9rem; }
 
-  main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
+    main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
 
-  .photo-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px; gap: 10px; border-radius: 20px; overflow: hidden; margin-bottom: 28px; }
-  .photo-grid .main-photo { grid-row: 1 / 3; background: linear-gradient(135deg, #1a0010 0%, #6d0035 100%); display: flex; align-items: center; justify-content: center; font-size: 5rem; position: relative; overflow: hidden; }
-  .photo-grid .main-photo::after { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%231a0010'/%3E%3Cline x1='200' y1='0' x2='200' y2='400' stroke='%23e91e8c' stroke-width='3'/%3E%3Cline x1='0' y1='200' x2='400' y2='200' stroke='%23e91e8c' stroke-width='3'/%3E%3Crect x='50' y='50' width='300' height='300' fill='none' stroke='%23c0006a' stroke-width='6' rx='6'/%3E%3Crect x='90' y='90' width='220' height='220' fill='%233d0020' rx='4'/%3E%3C/svg%3E") center/cover; opacity: 0.5; }
-  .court-label { position: absolute; bottom: 16px; left: 16px; z-index: 2; background: rgba(0,0,0,0.7); color: white; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; padding: 5px 12px; border-radius: 8px; border: 1px solid rgba(233,30,140,0.3); backdrop-filter: blur(6px); }
-  .photo-mini { background: linear-gradient(135deg, #3d0020, #6d0035); display: flex; align-items: center; justify-content: center; font-size: 2rem; position: relative; overflow: hidden; }
-  .photo-mini:nth-child(5) { background: #1a0010; font-size: 0.9rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--pink-400); cursor: pointer; gap: 4px; flex-direction: column; }
-  .photo-mini::after { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%233d0020'/%3E%3Crect x='30' y='30' width='140' height='140' fill='none' stroke='%23c0006a' stroke-width='4' rx='4'/%3E%3Cline x1='100' y1='0' x2='100' y2='200' stroke='%23e91e8c' stroke-width='2'/%3E%3C/svg%3E") center/cover; opacity: 0.4; }
+    .photo-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px; gap: 10px; border-radius: 20px; overflow: hidden; margin-bottom: 28px; }
+    .photo-grid .main-photo { grid-row: 1 / 3; background: linear-gradient(135deg, #1a0010 0%, #6d0035 100%); display: flex; align-items: center; justify-content: center; font-size: 5rem; position: relative; overflow: hidden; }
+    .photo-grid .main-photo::after { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%231a0010'/%3E%3Cline x1='200' y1='0' x2='200' y2='400' stroke='%23e91e8c' stroke-width='3'/%3E%3Cline x1='0' y1='200' x2='400' y2='200' stroke='%23e91e8c' stroke-width='3'/%3E%3Crect x='50' y='50' width='300' height='300' fill='none' stroke='%23c0006a' stroke-width='6' rx='6'/%3E%3Crect x='90' y='90' width='220' height='220' fill='%233d0020' rx='4'/%3E%3C/svg%3E") center/cover; opacity: 0.5; }
+    .court-label { position: absolute; bottom: 16px; left: 16px; z-index: 2; background: rgba(0,0,0,0.7); color: white; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; padding: 5px 12px; border-radius: 8px; border: 1px solid rgba(233,30,140,0.3); backdrop-filter: blur(6px); }
+    .photo-mini { background: linear-gradient(135deg, #3d0020, #6d0035); display: flex; align-items: center; justify-content: center; font-size: 2rem; position: relative; overflow: hidden; }
+    .photo-mini:nth-child(5) { background: #1a0010; font-size: 0.9rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--pink-400); cursor: pointer; gap: 4px; flex-direction: column; }
+    .photo-mini::after { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%233d0020'/%3E%3Crect x='30' y='30' width='140' height='140' fill='none' stroke='%23c0006a' stroke-width='4' rx='4'/%3E%3Cline x1='100' y1='0' x2='100' y2='200' stroke='%23e91e8c' stroke-width='2'/%3E%3C/svg%3E") center/cover; opacity: 0.4; }
 
-  .venue-header h1 { font-size: 1.9rem; font-weight: 800; color: white; letter-spacing: -0.5px; margin-bottom: 10px; }
-  .venue-meta { display: flex; flex-wrap: wrap; gap: 20px; color: var(--gray-text); font-size: 0.9rem; margin-bottom: 16px; }
-  .venue-meta span { display: flex; align-items: center; gap: 5px; }
+    .venue-header h1 { font-size: 1.9rem; font-weight: 800; color: white; letter-spacing: -0.5px; margin-bottom: 10px; }
+    .venue-meta { display: flex; flex-wrap: wrap; gap: 20px; color: var(--gray-text); font-size: 0.9rem; margin-bottom: 16px; }
+    .venue-meta span { display: flex; align-items: center; gap: 5px; }
 
-  .pricing-banner { background: #111; border: 1px solid #222; border-radius: 14px; padding: 14px 20px; margin: 16px 0 28px; display: flex; flex-wrap: wrap; gap: 6px 28px; align-items: center; }
-  .pricing-banner .rate { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--pink-400); font-size: 0.95rem; display: flex; align-items: center; gap: 7px; }
-  .pricing-banner .note { color: var(--gray-text); font-size: 0.82rem; width: 100%; }
+    .pricing-banner { background: #111; border: 1px solid #222; border-radius: 14px; padding: 14px 20px; margin: 16px 0 28px; display: flex; flex-wrap: wrap; gap: 6px 28px; align-items: center; }
+    .pricing-banner .rate { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--pink-400); font-size: 0.95rem; display: flex; align-items: center; gap: 7px; }
+    .pricing-banner .note { color: var(--gray-text); font-size: 0.82rem; width: 100%; }
 
-  .booking-section { display: grid; grid-template-columns: 280px 1fr; gap: 20px; align-items: start; }
+    .booking-section { display: grid; grid-template-columns: 280px 1fr; gap: 20px; align-items: start; }
 
-  .calendar-card { background: var(--dark-card); border-radius: 18px; border: 1px solid var(--dark-border); box-shadow: 0 1px 8px rgba(0,0,0,0.3); padding: 18px; position: sticky; top: 80px; }
-  .cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-  .cal-header h3 { font-size: 0.95rem; font-weight: 700; color: var(--pink-400); }
-  .cal-nav { background: none; border: 1px solid var(--dark-border); border-radius: 8px; width: 28px; height: 28px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--pink-400); transition: all 0.15s; }
-  .cal-nav:hover { background: rgba(233,30,140,0.1); border-color: var(--pink-600); }
-  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
-  .cal-dow { text-align: center; font-size: 0.7rem; font-weight: 700; color: var(--gray-text); padding: 4px 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-  .cal-day { text-align: center; padding: 6px 0; font-size: 0.82rem; border-radius: 8px; cursor: pointer; transition: all 0.15s; color: #9ca3af; }
-  .cal-day:hover:not(.empty):not(.past) { background: rgba(233,30,140,0.1); color: var(--pink-400); }
-  .cal-day.today { background: var(--pink-600); color: white; font-weight: 700; box-shadow: 0 0 12px rgba(233,30,140,0.5); }
-  .cal-day.selected:not(.today) { background: rgba(233,30,140,0.2); color: var(--pink-400); font-weight: 700; border: 1px solid var(--pink-600); }
-  .cal-day.past { color: #374151; cursor: default; }
-  .cal-day.empty { cursor: default; }
-  .legend { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--dark-border); display: flex; flex-direction: column; gap: 7px; }
-  .legend-title { font-size: 0.78rem; font-weight: 700; color: var(--gray-text); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
-  .legend-item { display: flex; align-items: center; gap: 9px; font-size: 0.83rem; color: #9ca3af; }
-  .dot { width: 10px; height: 10px; border-radius: 50%; }
-  .dot-green { background: #4ade80; }
-  .dot-pink { background: var(--pink-500); }
-  .dot-gray { background: #374151; }
-  .dot-red { background: #f87171; }
+    .calendar-card { background: var(--dark-card); border-radius: 18px; border: 1px solid var(--dark-border); box-shadow: 0 1px 8px rgba(0,0,0,0.3); padding: 18px; position: sticky; top: 80px; }
+    .cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .cal-header h3 { font-size: 0.95rem; font-weight: 700; color: var(--pink-400); }
+    .cal-nav { background: none; border: 1px solid var(--dark-border); border-radius: 8px; width: 28px; height: 28px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--pink-400); transition: all 0.15s; }
+    .cal-nav:hover { background: rgba(233,30,140,0.1); border-color: var(--pink-600); }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+    .cal-dow { text-align: center; font-size: 0.7rem; font-weight: 700; color: var(--gray-text); padding: 4px 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .cal-day { text-align: center; padding: 6px 0; font-size: 0.82rem; border-radius: 8px; cursor: pointer; transition: all 0.15s; color: #9ca3af; }
+    .cal-day:hover:not(.empty):not(.past) { background: rgba(233,30,140,0.1); color: var(--pink-400); }
+    .cal-day.today { background: var(--pink-600); color: white; font-weight: 700; box-shadow: 0 0 12px rgba(233,30,140,0.5); }
+    .cal-day.selected:not(.today) { background: rgba(233,30,140,0.2); color: var(--pink-400); font-weight: 700; border: 1px solid var(--pink-600); }
+    .cal-day.past { color: #374151; cursor: default; }
+    .cal-day.empty { cursor: default; }
+    .legend { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--dark-border); display: flex; flex-direction: column; gap: 7px; }
+    .legend-title { font-size: 0.78rem; font-weight: 700; color: var(--gray-text); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
+    .legend-item { display: flex; align-items: center; gap: 9px; font-size: 0.83rem; color: #9ca3af; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-green { background: #4ade80; }
+    .dot-pink { background: var(--pink-500); }
+    .dot-gray { background: #374151; }
+    .dot-red { background: #f87171; }
 
-  .table-panel { background: var(--dark-card); border-radius: 18px; border: 1px solid var(--dark-border); box-shadow: 0 1px 8px rgba(0,0,0,0.3); overflow: hidden; }
-  .table-header { padding: 16px 20px; border-bottom: 1px solid var(--dark-border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-  .table-header h2 { font-size: 1rem; font-weight: 700; color: white; display: flex; align-items: center; gap: 8px; }
-  .today-btn { background: rgba(233,30,140,0.1); border: 1px solid rgba(233,30,140,0.3); color: var(--pink-400); padding: 5px 14px; border-radius: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: all 0.15s; }
-  .today-btn:hover { background: rgba(233,30,140,0.2); }
+    .table-panel { background: var(--dark-card); border-radius: 18px; border: 1px solid var(--dark-border); box-shadow: 0 1px 8px rgba(0,0,0,0.3); overflow: hidden; }
+    .table-header { padding: 16px 20px; border-bottom: 1px solid var(--dark-border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .table-header h2 { font-size: 1rem; font-weight: 700; color: white; display: flex; align-items: center; gap: 8px; }
+    .today-btn { background: rgba(233,30,140,0.1); border: 1px solid rgba(233,30,140,0.3); color: var(--pink-400); padding: 5px 14px; border-radius: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: all 0.15s; }
+    .today-btn:hover { background: rgba(233,30,140,0.2); }
 
-  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  table { width: 100%; border-collapse: collapse; min-width: 480px; }
-  thead tr { background: #111; }
-  thead th { padding: 12px 16px; text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--pink-400); font-size: 0.82rem; border-bottom: 1px solid var(--dark-border); }
-  thead th:first-child { text-align: left; }
-  tbody tr { border-top: 1px solid var(--dark-border); transition: background 0.1s; }
-  tbody tr:hover { background: rgba(255,255,255,0.02); }
-  tbody td { padding: 10px 16px; font-size: 0.85rem; }
-  .time-cell { font-weight: 600; color: #9ca3af; white-space: nowrap; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table { width: 100%; border-collapse: collapse; min-width: 480px; }
+    thead tr { background: #111; }
+    thead th { padding: 12px 16px; text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--pink-400); font-size: 0.82rem; border-bottom: 1px solid var(--dark-border); }
+    thead th:first-child { text-align: left; }
+    tbody tr { border-top: 1px solid var(--dark-border); transition: background 0.1s; }
+    tbody tr:hover { background: rgba(255,255,255,0.02); }
+    tbody td { padding: 10px 16px; font-size: 0.85rem; }
+    .time-cell { font-weight: 600; color: #9ca3af; white-space: nowrap; }
 
-  .slot-btn { width: 100%; padding: 9px 10px; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.8rem; border: none; cursor: pointer; transition: all 0.18s; }
-  .slot-available { background: var(--green-bg); color: var(--green-text); border: 1px solid var(--green-border); }
-  .slot-available:hover { transform: scale(1.03); box-shadow: 0 2px 12px rgba(74,222,128,0.2); }
-  .slot-selected { background: var(--selected-bg); color: var(--selected-text); border: 1px solid var(--selected-border); box-shadow: 0 0 12px rgba(233,30,140,0.3); }
-  .slot-selected:hover { transform: scale(1.03); }
-  .slot-booked { background: var(--red-bg); color: var(--red-text); border: 1px solid #7f1d1d; cursor: not-allowed; }
-  .slot-pending { background: #1a1a1a; color: #4b5563; border: 1px solid #2a2a2a; cursor: default; font-size: 0.72rem; }
+    .slot-btn { width: 100%; padding: 9px 10px; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.8rem; border: none; cursor: pointer; transition: all 0.18s; }
+    .slot-available { background: var(--green-bg); color: var(--green-text); border: 1px solid var(--green-border); }
+    .slot-available:hover { transform: scale(1.03); box-shadow: 0 2px 12px rgba(74,222,128,0.2); }
+    .slot-selected { background: var(--selected-bg); color: var(--selected-text); border: 1px solid var(--selected-border); box-shadow: 0 0 12px rgba(233,30,140,0.3); }
+    .slot-selected:hover { transform: scale(1.03); }
+    .slot-booked { background: var(--red-bg); color: var(--red-text); border: 1px solid #7f1d1d; cursor: not-allowed; }
+    .slot-pending { background: #1a1a1a; color: #4b5563; border: 1px solid #2a2a2a; cursor: default; font-size: 0.72rem; }
 
-  /* CART BAR */
-  .cart-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #111; border-top: 1px solid var(--pink-700); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; z-index: 300; transform: translateY(100%); transition: transform 0.3s ease; box-shadow: 0 -4px 30px rgba(233,30,140,0.2); }
-  .cart-bar.visible { transform: translateY(0); }
-  .cart-info { display: flex; flex-direction: column; gap: 2px; }
-  .cart-info .cart-count { font-size: 0.82rem; color: var(--pink-400); font-weight: 600; }
-  .cart-info .cart-total { font-size: 1.1rem; font-weight: 800; color: white; font-family: 'Plus Jakarta Sans', sans-serif; }
-  .cart-info .cart-total span { color: var(--pink-500); }
-  .cart-actions { display: flex; gap: 10px; align-items: center; }
-  .btn-clear { background: transparent; border: 1px solid #333; color: #6b7280; padding: 9px 16px; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.15s; }
-  .btn-clear:hover { border-color: var(--red-text); color: var(--red-text); }
-  .btn-checkout { background: linear-gradient(135deg, var(--pink-700), var(--pink-500)); color: white; border: none; padding: 10px 22px; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 16px rgba(233,30,140,0.3); }
-  .btn-checkout:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(233,30,140,0.5); }
+    /* CART BAR */
+    .cart-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #111; border-top: 1px solid var(--pink-700); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; z-index: 300; transform: translateY(100%); transition: transform 0.3s ease; box-shadow: 0 -4px 30px rgba(233,30,140,0.2); }
+    .cart-bar.visible { transform: translateY(0); }
+    .cart-info { display: flex; flex-direction: column; gap: 2px; }
+    .cart-info .cart-count { font-size: 0.82rem; color: var(--pink-400); font-weight: 600; }
+    .cart-info .cart-total { font-size: 1.1rem; font-weight: 800; color: white; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .cart-info .cart-total span { color: var(--pink-500); }
+    .cart-actions { display: flex; gap: 10px; align-items: center; }
+    .btn-clear { background: transparent; border: 1px solid #333; color: #6b7280; padding: 9px 16px; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.15s; }
+    .btn-clear:hover { border-color: var(--red-text); color: var(--red-text); }
+    .btn-checkout { background: linear-gradient(135deg, var(--pink-700), var(--pink-500)); color: white; border: none; padding: 10px 22px; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 16px rgba(233,30,140,0.3); }
+    .btn-checkout:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(233,30,140,0.5); }
 
-  .policies-section { margin-top: 32px; background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 18px; padding: 24px; }
-  .policies-section h2 { font-size: 1.05rem; font-weight: 800; color: white; margin-bottom: 18px; }
-  .policies-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
-  .policy-item h4 { font-size: 0.75rem; font-weight: 700; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-  .policy-item p { font-size: 0.85rem; color: #9ca3af; line-height: 1.6; }
-  .faq-item { display: flex; align-items: center; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid var(--dark-border); font-size: 0.85rem; color: var(--pink-400); cursor: pointer; transition: color 0.15s; }
-  .faq-item:last-child { border-bottom: none; }
-  .faq-item:hover { color: var(--pink-500); }
+    .policies-section { margin-top: 32px; background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 18px; padding: 24px; }
+    .policies-section h2 { font-size: 1.05rem; font-weight: 800; color: white; margin-bottom: 18px; }
+    .policies-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+    .policy-item h4 { font-size: 0.75rem; font-weight: 700; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .policy-item p { font-size: 0.85rem; color: #9ca3af; line-height: 1.6; }
+    .faq-item { display: flex; align-items: center; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid var(--dark-border); font-size: 0.85rem; color: var(--pink-400); cursor: pointer; transition: color 0.15s; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item:hover { color: var(--pink-500); }
 
-  footer { background: #080808; border-top: 1px solid #1a1a1a; color: white; padding: 40px 0 0; margin-top: 60px; }
-  .footer-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-  .footer-brand h2 { font-size: 1.2rem; font-weight: 800; margin-bottom: 6px; }
-  .footer-brand h2 span { color: var(--pink-500); }
-  .footer-brand p { color: #4b5563; font-size: 0.88rem; margin-bottom: 14px; }
-  .social-links { display: flex; gap: 10px; }
-  .social-link { width: 34px; height: 34px; background: rgba(233,30,140,0.1); border: 1px solid rgba(233,30,140,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.9rem; color: var(--pink-400); text-decoration: none; transition: all 0.15s; }
-  .social-link:hover { background: rgba(233,30,140,0.2); }
-  .footer-links { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
-  .footer-links a { color: #4b5563; font-size: 0.88rem; text-decoration: none; transition: color 0.15s; }
-  .footer-links a:hover { color: var(--pink-400); }
-  .footer-bottom { border-top: 1px solid #1a1a1a; text-align: center; padding: 14px 20px; font-size: 0.8rem; color: #374151; }
+    footer { background: #080808; border-top: 1px solid #1a1a1a; color: white; padding: 40px 0 0; margin-top: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .footer-brand h2 { font-size: 1.2rem; font-weight: 800; margin-bottom: 6px; }
+    .footer-brand h2 span { color: var(--pink-500); }
+    .footer-brand p { color: #4b5563; font-size: 0.88rem; margin-bottom: 14px; }
+    .social-links { display: flex; gap: 10px; }
+    .social-link { width: 34px; height: 34px; background: rgba(233,30,140,0.1); border: 1px solid rgba(233,30,140,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.9rem; color: var(--pink-400); text-decoration: none; transition: all 0.15s; }
+    .social-link:hover { background: rgba(233,30,140,0.2); }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+    .footer-links a { color: #4b5563; font-size: 0.88rem; text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--pink-400); }
+    .footer-bottom { border-top: 1px solid #1a1a1a; text-align: center; padding: 14px 20px; font-size: 0.8rem; color: #374151; }
 
-  /* MODAL */
-  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(6px); }
-  .modal-overlay.open { display: flex; }
-  .modal { background: #111; border: 1px solid #222; border-radius: 20px; width: 90%; max-width: 460px; padding: 28px; box-shadow: 0 20px 60px rgba(233,30,140,0.15); animation: slideUp 0.2s ease; max-height: 90vh; overflow-y: auto; }
-  @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-  .modal-top { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
-  .modal-top .check-icon { width: 36px; height: 36px; background: rgba(233,30,140,0.15); border: 1px solid var(--pink-700); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--pink-400); font-size: 1rem; }
-  .modal h2 { font-size: 1.25rem; font-weight: 800; color: white; }
-  .modal .subtitle { font-size: 0.85rem; color: var(--gray-text); margin-bottom: 20px; }
-  .modal-progress { height: 4px; background: #1a1a1a; border-radius: 2px; margin-bottom: 20px; }
-  .modal-progress-fill { height: 100%; background: linear-gradient(90deg, var(--pink-700), var(--pink-500)); border-radius: 2px; width: 80%; }
+    /* MODAL */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(6px); }
+    .modal-overlay.open { display: flex; }
+    .modal { background: #111; border: 1px solid #222; border-radius: 20px; width: 90%; max-width: 460px; padding: 28px; box-shadow: 0 20px 60px rgba(233,30,140,0.15); animation: slideUp 0.2s ease; max-height: 90vh; overflow-y: auto; }
+    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .modal-top { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+    .modal-top .check-icon { width: 36px; height: 36px; background: rgba(233,30,140,0.15); border: 1px solid var(--pink-700); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--pink-400); font-size: 1rem; }
+    .modal h2 { font-size: 1.25rem; font-weight: 800; color: white; }
+    .modal .subtitle { font-size: 0.85rem; color: var(--gray-text); margin-bottom: 20px; }
+    .modal-progress { height: 4px; background: #1a1a1a; border-radius: 2px; margin-bottom: 20px; }
+    .modal-progress-fill { height: 100%; background: linear-gradient(90deg, var(--pink-700), var(--pink-500)); border-radius: 2px; width: 80%; }
 
-  .slot-summary { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; overflow: hidden; margin-bottom: 18px; }
-  .slot-summary-title { font-size: 0.75rem; font-weight: 700; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; padding: 10px 14px; border-bottom: 1px solid #2a2a2a; }
-  .slot-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-bottom: 1px solid #1f1f1f; }
-  .slot-row:last-child { border-bottom: none; }
-  .slot-row-info { display: flex; flex-direction: column; gap: 2px; }
-  .slot-row-court { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: white; font-size: 0.88rem; }
-  .slot-row-time { font-size: 0.78rem; color: var(--gray-text); }
-  .slot-row-price { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--pink-400); font-size: 0.9rem; }
-  .slot-total-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; background: rgba(233,30,140,0.05); border-top: 1px solid rgba(233,30,140,0.2); }
-  .slot-total-label { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: #9ca3af; font-size: 0.88rem; }
-  .slot-total-amount { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: var(--pink-500); font-size: 1.1rem; }
+    .slot-summary { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; overflow: hidden; margin-bottom: 18px; }
+    .slot-summary-title { font-size: 0.75rem; font-weight: 700; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; padding: 10px 14px; border-bottom: 1px solid #2a2a2a; }
+    .slot-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-bottom: 1px solid #1f1f1f; }
+    .slot-row:last-child { border-bottom: none; }
+    .slot-row-info { display: flex; flex-direction: column; gap: 2px; }
+    .slot-row-court { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: white; font-size: 0.88rem; }
+    .slot-row-time { font-size: 0.78rem; color: var(--gray-text); }
+    .slot-row-price { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--pink-400); font-size: 0.9rem; }
+    .slot-total-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; background: rgba(233,30,140,0.05); border-top: 1px solid rgba(233,30,140,0.2); }
+    .slot-total-label { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: #9ca3af; font-size: 0.88rem; }
+    .slot-total-amount { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: var(--pink-500); font-size: 1.1rem; }
 
-  .expire-notice { background: #1a1200; border: 1px solid #3d2f00; border-radius: 10px; padding: 11px 14px; margin-bottom: 18px; display: flex; align-items: flex-start; gap: 9px; font-size: 0.82rem; color: #f59e0b; line-height: 1.5; }
-  .expire-notice .icon { flex-shrink: 0; font-size: 1rem; margin-top: 1px; }
+    .expire-notice { background: #1a1200; border: 1px solid #3d2f00; border-radius: 10px; padding: 11px 14px; margin-bottom: 18px; display: flex; align-items: flex-start; gap: 9px; font-size: 0.82rem; color: #f59e0b; line-height: 1.5; }
+    .expire-notice .icon { flex-shrink: 0; font-size: 1rem; margin-top: 1px; }
 
-  .form-group { margin-bottom: 14px; }
-  .form-group label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
-  .form-group input, .form-group select { width: 100%; padding: 10px 13px; border: 1px solid var(--dark-border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: white; outline: none; background: #1a1a1a; transition: border 0.15s; }
-  .form-group input:focus, .form-group select:focus { border-color: var(--pink-600); box-shadow: 0 0 0 3px rgba(233,30,140,0.1); }
-  .form-group input::placeholder { color: #374151; }
-  .form-group select option { background: #1a1a1a; }
-  .phone-row { display: flex; gap: 8px; align-items: stretch; }
-  .phone-prefix { background: #1a1a1a; border: 1px solid var(--dark-border); border-radius: 10px; padding: 10px 12px; color: #9ca3af; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; white-space: nowrap; flex-shrink: 0; }
-  .phone-prefix span { font-size: 1.1rem; }
-  .modal-hint { font-size: 0.75rem; color: #374151; margin-top: 4px; }
-  .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
-  .btn-cancel { flex: 1; padding: 11px; border-radius: 10px; background: #1a1a1a; border: 1px solid #2a2a2a; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: #6b7280; cursor: pointer; transition: all 0.15s; }
-  .btn-cancel:hover { border-color: var(--red-text); color: var(--red-text); }
-  .btn-confirm { flex: 2; padding: 11px; border-radius: 10px; background: linear-gradient(135deg, var(--pink-700), var(--pink-500)); border: none; color: white; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 16px rgba(233,30,140,0.3); }
-  .btn-confirm:hover { box-shadow: 0 6px 24px rgba(233,30,140,0.5); transform: translateY(-1px); }
-  .btn-confirm:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+    .form-group input, .form-group select { width: 100%; padding: 10px 13px; border: 1px solid var(--dark-border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: white; outline: none; background: #1a1a1a; transition: border 0.15s; }
+    .form-group input:focus, .form-group select:focus { border-color: var(--pink-600); box-shadow: 0 0 0 3px rgba(233,30,140,0.1); }
+    .form-group input::placeholder { color: #374151; }
+    .form-group select option { background: #1a1a1a; }
+    .phone-row { display: flex; gap: 8px; align-items: stretch; }
+    .phone-prefix { background: #1a1a1a; border: 1px solid var(--dark-border); border-radius: 10px; padding: 10px 12px; color: #9ca3af; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; white-space: nowrap; flex-shrink: 0; }
+    .phone-prefix span { font-size: 1.1rem; }
+    .modal-hint { font-size: 0.75rem; color: #374151; margin-top: 4px; }
+    .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+    .btn-cancel { flex: 1; padding: 11px; border-radius: 10px; background: #1a1a1a; border: 1px solid #2a2a2a; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: #6b7280; cursor: pointer; transition: all 0.15s; }
+    .btn-cancel:hover { border-color: var(--red-text); color: var(--red-text); }
+    .btn-confirm { flex: 2; padding: 11px; border-radius: 10px; background: linear-gradient(135deg, var(--pink-700), var(--pink-500)); border: none; color: white; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 16px rgba(233,30,140,0.3); }
+    .btn-confirm:hover { box-shadow: 0 6px 24px rgba(233,30,140,0.5); transform: translateY(-1px); }
+    .btn-confirm:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
-  .toast { position: fixed; bottom: 80px; right: 24px; background: #1a1a1a; border: 1px solid #2a2a2a; color: white; padding: 13px 20px; border-radius: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 0.88rem; z-index: 9999; transform: translateY(80px); opacity: 0; transition: all 0.3s ease; box-shadow: 0 8px 24px rgba(0,0,0,0.4); max-width: 320px; }
-  .toast.show { transform: translateY(0); opacity: 1; }
-  .toast.success { border-color: var(--pink-700); background: rgba(109,0,53,0.9); }
+    .toast { position: fixed; bottom: 80px; right: 24px; background: #1a1a1a; border: 1px solid #2a2a2a; color: white; padding: 13px 20px; border-radius: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 0.88rem; z-index: 9999; transform: translateY(80px); opacity: 0; transition: all 0.3s ease; box-shadow: 0 8px 24px rgba(0,0,0,0.4); max-width: 320px; }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.success { border-color: var(--pink-700); background: rgba(109,0,53,0.9); }
 
-  .pending-timer { font-size: 0.68rem; color: #6b7280; display: block; margin-top: 2px; }
+    .pending-timer { font-size: 0.68rem; color: #6b7280; display: block; margin-top: 2px; }
 
-  @media (max-width: 768px) {
-    nav { padding: 0 1rem; position: relative; }
-    .nav-actions { display: none; }
-    .hamburger { display: flex; align-items: center; justify-content: center; }
-    .booking-section { grid-template-columns: 1fr; }
-    .photo-grid { grid-template-columns: 1fr; grid-template-rows: 220px; }
-    .photo-grid .main-photo { grid-row: auto; }
-    .photo-mini { display: none; }
-    .policies-grid { grid-template-columns: 1fr; gap: 12px; }
-    .footer-inner { grid-template-columns: 1fr; }
-    .footer-links { align-items: flex-start; }
-    .venue-header h1 { font-size: 1.35rem; }
-    .calendar-card { position: static; }
-    .cart-bar { padding: 12px 16px; }
-  }
-  @media (max-width: 480px) {
-    main { padding: 12px 12px 40px; }
-    .venue-header h1 { font-size: 1.15rem; }
-    .modal { width: 95%; padding: 18px; }
-    .policies-section { padding: 16px; }
-  }
-</style>
-</head>
-<body>
+    @media (max-width: 768px) {
+      nav { padding: 0 1rem; position: relative; }
+      .nav-actions { display: none; }
+      .hamburger { display: flex; align-items: center; justify-content: center; }
+      .booking-section { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: 1fr; grid-template-rows: 220px; }
+      .photo-grid .main-photo { grid-row: auto; }
+      .photo-mini { display: none; }
+      .policies-grid { grid-template-columns: 1fr; gap: 12px; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-links { align-items: flex-start; }
+      .venue-header h1 { font-size: 1.35rem; }
+      .calendar-card { position: static; }
+      .cart-bar { padding: 12px 16px; }
+    }
+    @media (max-width: 480px) {
+      main { padding: 12px 12px 40px; }
+      .venue-header h1 { font-size: 1.15rem; }
+      .modal { width: 95%; padding: 18px; }
+      .policies-section { padding: 16px; }
+    }
+  </style>
+  </head>
+  <body>
 
-<nav>
-  <div class="nav-brand">🏓 Demo-Book<span>PickleBall</span></div>
-  <div class="nav-actions" id="desktopNav">
-    <button class="btn-outline">Login</button>
-    <button class="btn-primary">My Bookings</button>
-  </div>
-  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" onclick="toggleMenu()">
-    <span id="hamburgerIcon">☰</span>
-  </button>
-</nav>
-
-<div class="mobile-menu" id="mobileMenu">
-  <button class="btn-outline" onclick="toggleMenu()">Login</button>
-  <button class="btn-primary" onclick="toggleMenu()">My Bookings</button>
-</div>
-
-<main>
-  <div class="photo-grid">
-    <div class="main-photo"><span class="court-label">📸 Court View</span></div>
-    <div class="photo-mini"></div>
-    <div class="photo-mini"></div>
-    <div class="photo-mini"></div>
-    <div class="photo-mini" onclick="showToast('🖼️ Gallery coming soon!')"><span>+</span><span>Show all photos</span></div>
-  </div>
-
-  <div class="venue-header">
-    <h1>Book a Court at Demo-BookPickleBall</h1>
-    <div class="venue-meta">
-      <span>📍 Wilcon Depot (Talisay, Cebu), Philippines 6000</span>
-      <span>🕒 60-min slots</span>
-      <span>📞 +63 917 000 0000</span>
+  <nav>
+    <div class="nav-brand">Dink Society<span>Pickleball</span></div>
+    <div class="nav-actions" id="desktopNav">
+      <button class="btn-outline">Login</button>
+      <button class="btn-primary">My Bookings</button>
     </div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" onclick="toggleMenu()">
+      <span id="hamburgerIcon">☰</span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="btn-outline" onclick="toggleMenu()">Login</button>
+    <button class="btn-primary" onclick="toggleMenu()">My Bookings</button>
   </div>
 
-  <div class="pricing-banner">
-    <div class="rate">☀️ Day Rate: ₱450 / hour (8AM – 4PM)</div>
-    <div class="rate">🌙 Night Rate: ₱500 / hour (4PM onwards &amp; before 8AM)</div>
-    <div class="note">ℹ Tap available slots to select multiple. Final rates may vary.</div>
-  </div>
+  <main>
+    <div class="photo-grid">
+      <div class="main-photo"><span class="court-label">📸 Court View</span></div>
+      <div class="photo-mini"></div>
+      <div class="photo-mini"></div>
+      <div class="photo-mini"></div>
+      <div class="photo-mini" onclick="showToast('🖼️ Gallery coming soon!')"><span>+</span><span>Show all photos</span></div>
+    </div>
 
-  <div class="booking-section">
-    <div>
-      <div class="calendar-card">
-        <div class="cal-header">
-          <button class="cal-nav" id="prevBtn">&#8249;</button>
-          <h3 id="calMonthYear"></h3>
-          <button class="cal-nav" id="nextBtn">&#8250;</button>
-        </div>
-        <div class="cal-grid" id="calGrid"></div>
-        <div class="legend">
-          <div class="legend-title">Legend</div>
-          <div class="legend-item"><div class="dot dot-green"></div> Available</div>
-          <div class="legend-item"><div class="dot dot-pink"></div> Selected</div>
-          <div class="legend-item"><div class="dot dot-gray"></div> Pending (30m)</div>
-          <div class="legend-item"><div class="dot dot-red"></div> Booked</div>
-        </div>
+    <div class="venue-header">
+      <h1>Book a Court at Dink Society - Pickleball</h1>
+      <div class="venue-meta">
+        <span>📍 Wilcon Depot (Talisay, Cebu), Philippines 6000</span>
+        <span>🕒 60-min slots</span>
+        <span>📞 +63 917 000 0000</span>
       </div>
     </div>
 
-    <div class="table-panel">
-      <div class="table-header">
-        <h2>📅 <span id="selectedDateLabel"></span></h2>
-        <button class="today-btn" onclick="goToToday()">Today</button>
-      </div>
-      <div class="table-scroll">
-        <table>
-          <thead>
-            <tr>
-              <th>Time</th>
-              <th>🏟 Court One</th>
-              <th>🏟 Court Two</th>
-            </tr>
-          </thead>
-          <tbody id="slotBody"></tbody>
-        </table>
-      </div>
+    <div class="pricing-banner">
+      <div class="rate">☀️ Day Rate: ₱450 / hour (8AM – 4PM)</div>
+      <div class="rate">🌙 Night Rate: ₱500 / hour (4PM onwards &amp; before 8AM)</div>
+      <div class="note">ℹ Tap available slots to select multiple. Final rates may vary.</div>
     </div>
-  </div>
 
-  <div class="policies-section">
-    <h2>Operating Hours &amp; Policies</h2>
-    <div class="policies-grid">
-      <div class="policy-item">
-        <h4>🕐 Operating Hours</h4>
-        <p>24 Hours — courts available any time, every day.</p>
-      </div>
-      <div class="policy-item">
-        <h4>🛡 Cancellation Policy</h4>
-        <p>All bookings are final and non-refundable. Once payment has been made, no cancellations, refunds, or modifications will be accepted.</p>
-      </div>
-      <div class="policy-item">
-        <h4>❓ FAQ</h4>
-        <div class="faq-item" onclick="showToast('ℹ Tap any available slot to select, then checkout!')">How do I book a court? <span>›</span></div>
-        <div class="faq-item" onclick="showToast('ℹ All bookings are final and non-refundable.')">What is the cancellation policy? <span>›</span></div>
-        <div class="faq-item" onclick="showToast('ℹ Day: ₱450/hr | Night: ₱500/hr')">How much does it cost? <span>›</span></div>
-        <div class="faq-item" onclick="showToast('ℹ Equipment rental available on-site.')">Do you provide equipment? <span>›</span></div>
-        <div class="faq-item" onclick="showToast('ℹ Yes, free parking is available.')">Is parking available? <span>›</span></div>
-      </div>
-    </div>
-  </div>
-</main>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <h2>Demo-Book<span>PickleBall</span></h2>
-      <p>Easy. Fast. Reliable Court Booking.</p>
-      <div class="social-links">
-        <a class="social-link" href="#">f</a>
-        <a class="social-link" href="#">ig</a>
-        <a class="social-link" href="#">tt</a>
-      </div>
-    </div>
-    <div class="footer-links">
-      <a href="#">About Us</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a href="#">Contact Us</a>
-    </div>
-  </div>
-  <div class="footer-bottom">© 2026 Demo-BookPickleBall. All rights reserved. Developer: HeoIsCode</div>
-</footer>
-
-<!-- Cart Bar -->
-<div class="cart-bar" id="cartBar">
-  <div class="cart-info">
-    <div class="cart-count" id="cartCount">0 slots selected</div>
-    <div class="cart-total">Total: <span id="cartTotal">₱0</span></div>
-  </div>
-  <div class="cart-actions">
-    <button class="btn-clear" onclick="clearSelection()">Clear</button>
-    <button class="btn-checkout" onclick="openModal()">Confirm Booking →</button>
-  </div>
-</div>
-
-<!-- Modal -->
-<div class="modal-overlay" id="bookingModal">
-  <div class="modal">
-    <div class="modal-progress"><div class="modal-progress-fill"></div></div>
-    <div class="modal-top">
-      <div class="check-icon">✓</div>
+    <div class="booking-section">
       <div>
-        <h2>Confirm Booking</h2>
-        <p class="subtitle">You're almost ready to play!</p>
+        <div class="calendar-card">
+          <div class="cal-header">
+            <button class="cal-nav" id="prevBtn">&#8249;</button>
+            <h3 id="calMonthYear"></h3>
+            <button class="cal-nav" id="nextBtn">&#8250;</button>
+          </div>
+          <div class="cal-grid" id="calGrid"></div>
+          <div class="legend">
+            <div class="legend-title">Legend</div>
+            <div class="legend-item"><div class="dot dot-green"></div> Available</div>
+            <div class="legend-item"><div class="dot dot-pink"></div> Selected</div>
+            <div class="legend-item"><div class="dot dot-gray"></div> Pending (30m)</div>
+            <div class="legend-item"><div class="dot dot-red"></div> Booked</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-panel">
+        <div class="table-header">
+          <h2>📅 <span id="selectedDateLabel"></span></h2>
+          <button class="today-btn" onclick="goToToday()">Today</button>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>🏟 Court One</th>
+                <th>🏟 Court Two</th>
+              </tr>
+            </thead>
+            <tbody id="slotBody"></tbody>
+          </table>
+        </div>
       </div>
     </div>
 
-    <div class="slot-summary">
-      <div class="slot-summary-title">📅 <span id="modalDate"></span> — Selected Slots</div>
-      <div id="modalSlotRows"></div>
-      <div class="slot-total-row">
-        <div class="slot-total-label">Total (<span id="modalSlotCount">0</span> slots)</div>
-        <div class="slot-total-amount" id="modalTotal">₱0</div>
+    <div class="policies-section">
+      <h2>Operating Hours &amp; Policies</h2>
+      <div class="policies-grid">
+        <div class="policy-item">
+          <h4>🕐 Operating Hours</h4>
+          <p>24 Hours — courts available any time, every day.</p>
+        </div>
+        <div class="policy-item">
+          <h4>🛡 Cancellation Policy</h4>
+          <p>All bookings are final and non-refundable. Once payment has been made, no cancellations, refunds, or modifications will be accepted.</p>
+        </div>
+        <div class="policy-item">
+          <h4>❓ FAQ</h4>
+          <div class="faq-item" onclick="showToast('ℹ Tap any available slot to select, then checkout!')">How do I book a court? <span>›</span></div>
+          <div class="faq-item" onclick="showToast('ℹ All bookings are final and non-refundable.')">What is the cancellation policy? <span>›</span></div>
+          <div class="faq-item" onclick="showToast('ℹ Day: ₱450/hr | Night: ₱500/hr')">How much does it cost? <span>›</span></div>
+          <div class="faq-item" onclick="showToast('ℹ Equipment rental available on-site.')">Do you provide equipment? <span>›</span></div>
+          <div class="faq-item" onclick="showToast('ℹ Yes, free parking is available.')">Is parking available? <span>›</span></div>
+        </div>
       </div>
     </div>
+  </main>
 
-    <div class="expire-notice">
-      <span class="icon">⏱</span>
-      <span>Pending bookings expire in <strong>30 minutes</strong> if not confirmed. Please complete payment promptly.</span>
-    </div>
-
-    <div class="form-group">
-      <label>Facebook Profile Name</label>
-      <input type="text" id="fbName" placeholder="Enter your name"/>
-    </div>
-    <div class="form-group">
-      <label>Phone Number</label>
-      <div class="phone-row">
-        <div class="phone-prefix"><span>🇵🇭</span> +63</div>
-        <input type="tel" id="phone" placeholder="917 123 4567" style="flex:1"/>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h2>Dink Society<span>Pickleball</span></h2>
+        <p>Easy. Fast. Reliable Court Booking.</p>
+        <div class="social-links">
+          <a class="social-link" href="#">f</a>
+          <a class="social-link" href="#">ig</a>
+          <a class="social-link" href="#">tt</a>
+        </div>
       </div>
-      <div class="modal-hint">Mobile number (e.g., 917 123 4567)</div>
+      <div class="footer-links">
+        <a href="#">About Us</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+      </div>
     </div>
+    <div class="footer-bottom">© 2026 Dink Society-Pickleball. All rights reserved. Developer: HeoIsCode</div>
+  </footer>
 
-    <div class="modal-actions">
-      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
-      <button class="btn-confirm" id="submitBtn" onclick="confirmBooking()">Submit Booking</button>
+  <!-- Cart Bar -->
+  <div class="cart-bar" id="cartBar">
+    <div class="cart-info">
+      <div class="cart-count" id="cartCount">0 slots selected</div>
+      <div class="cart-total">Total: <span id="cartTotal">₱0</span></div>
+    </div>
+    <div class="cart-actions">
+      <button class="btn-clear" onclick="clearSelection()">Clear</button>
+      <button class="btn-checkout" onclick="openModal()">Confirm Booking →</button>
     </div>
   </div>
-</div>
 
-<div class="toast" id="toast"></div>
+  <!-- Modal -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="modal">
+      <div class="modal-progress"><div class="modal-progress-fill"></div></div>
+      <div class="modal-top">
+        <div class="check-icon">✓</div>
+        <div>
+          <h2>Confirm Booking</h2>
+          <p class="subtitle">You're almost ready to play!</p>
+        </div>
+      </div>
 
-<script>
-const SLOTS = ['12:00 AM - 1:00 AM','1:00 AM - 2:00 AM','2:00 AM - 3:00 AM','3:00 AM - 4:00 AM','4:00 AM - 5:00 AM','5:00 AM - 6:00 AM','6:00 AM - 7:00 AM','7:00 AM - 8:00 AM','8:00 AM - 9:00 AM','9:00 AM - 10:00 AM','10:00 AM - 11:00 AM','11:00 AM - 12:00 PM','12:00 PM - 1:00 PM','1:00 PM - 2:00 PM','2:00 PM - 3:00 PM','3:00 PM - 4:00 PM','4:00 PM - 5:00 PM','5:00 PM - 6:00 PM','6:00 PM - 7:00 PM','7:00 PM - 8:00 PM','8:00 PM - 9:00 PM','9:00 PM - 10:00 PM','10:00 PM - 11:00 PM','11:00 PM - 12:00 AM'];
-const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const PENDING_MS = 30 * 60 * 1000; // 30 minutes
+      <div class="slot-summary">
+        <div class="slot-summary-title">📅 <span id="modalDate"></span> — Selected Slots</div>
+        <div id="modalSlotRows"></div>
+        <div class="slot-total-row">
+          <div class="slot-total-label">Total (<span id="modalSlotCount">0</span> slots)</div>
+          <div class="slot-total-amount" id="modalTotal">₱0</div>
+        </div>
+      </div>
 
-// bookingData: key -> { status: 'booked'|'pending', expiresAt?: timestamp }
-const bookingData = {};
-// selectedSlots: Set of keys currently selected by user (not yet confirmed)
-const selectedSlots = new Set();
-const pendingTimers = {};
+      <div class="expire-notice">
+        <span class="icon">⏱</span>
+        <span>Pending bookings expire in <strong>30 minutes</strong> if not confirmed. Please complete payment promptly.</span>
+      </div>
 
-const today = new Date();
-let viewYear = today.getFullYear(), viewMonth = today.getMonth();
-let selectedDate = new Date(today);
-let menuOpen = false;
+      <div class="form-group">
+        <label>Facebook Profile Name</label>
+        <input type="text" id="fbName" placeholder="Enter your name"/>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <div class="phone-row">
+          <div class="phone-prefix"><span>🇵🇭</span> +63</div>
+          <input type="tel" id="phone" placeholder="917 123 4567" style="flex:1"/>
+        </div>
+        <div class="modal-hint">Mobile number (e.g., 917 123 4567)</div>
+      </div>
 
-function dateKey(d) { return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`; }
-function slotKey(dk, slot, court) { return `${dk}|${slot}|${court}`; }
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+        <button class="btn-confirm" id="submitBtn" onclick="confirmBooking()">Submit Booking</button>
+      </div>
+    </div>
+  </div>
 
-function isDay(slot) {
-  // Day rate: 8AM-4PM
-  const h = ['8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM'];
-  return h.some(t => slot.startsWith(t));
-}
-function getRate(slot) { return isDay(slot) ? 450 : 500; }
+  <div class="toast" id="toast"></div>
 
-function getBaseStatus(dk, slot, court) {
-  // seeded pseudo-random for demo
-  const hash = (dk + slot + court).split('').reduce((a,c)=>a+c.charCodeAt(0),0);
-  const r = hash % 10;
-  if (r < 6) return 'available';
-  if (r < 8) return 'booked';
-  return 'seeded-pending'; // show as pending but not expiring
-}
+  <script>
+  const SLOTS = ['12:00 AM - 1:00 AM','1:00 AM - 2:00 AM','2:00 AM - 3:00 AM','3:00 AM - 4:00 AM','4:00 AM - 5:00 AM','5:00 AM - 6:00 AM','6:00 AM - 7:00 AM','7:00 AM - 8:00 AM','8:00 AM - 9:00 AM','9:00 AM - 10:00 AM','10:00 AM - 11:00 AM','11:00 AM - 12:00 PM','12:00 PM - 1:00 PM','1:00 PM - 2:00 PM','2:00 PM - 3:00 PM','3:00 PM - 4:00 PM','4:00 PM - 5:00 PM','5:00 PM - 6:00 PM','6:00 PM - 7:00 PM','7:00 PM - 8:00 PM','8:00 PM - 9:00 PM','9:00 PM - 10:00 PM','10:00 PM - 11:00 PM','11:00 PM - 12:00 AM'];
+  const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const PENDING_MS = 30 * 60 * 1000; // 30 minutes
 
-function getStatus(dk, slot, court) {
-  const k = slotKey(dk, slot, court);
-  if (bookingData[k]) {
-    const d = bookingData[k];
-    if (d.status === 'pending' && Date.now() > d.expiresAt) {
-      delete bookingData[k];
-      // already cleaned
+  // bookingData: key -> { status: 'booked'|'pending', expiresAt?: timestamp }
+  const bookingData = {};
+  // selectedSlots: Set of keys currently selected by user (not yet confirmed)
+  const selectedSlots = new Set();
+  const pendingTimers = {};
+
+  const today = new Date();
+  let viewYear = today.getFullYear(), viewMonth = today.getMonth();
+  let selectedDate = new Date(today);
+  let menuOpen = false;
+
+  function dateKey(d) { return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`; }
+  function slotKey(dk, slot, court) { return `${dk}|${slot}|${court}`; }
+
+  function isDay(slot) {
+    // Day rate: 8AM-4PM
+    const h = ['8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM'];
+    return h.some(t => slot.startsWith(t));
+  }
+  function getRate(slot) { return isDay(slot) ? 450 : 500; }
+
+  function getBaseStatus(dk, slot, court) {
+    // seeded pseudo-random for demo
+    const hash = (dk + slot + court).split('').reduce((a,c)=>a+c.charCodeAt(0),0);
+    const r = hash % 10;
+    if (r < 6) return 'available';
+    if (r < 8) return 'booked';
+    return 'seeded-pending'; // show as pending but not expiring
+  }
+
+  function getStatus(dk, slot, court) {
+    const k = slotKey(dk, slot, court);
+    if (bookingData[k]) {
+      const d = bookingData[k];
+      if (d.status === 'pending' && Date.now() > d.expiresAt) {
+        delete bookingData[k];
+        // already cleaned
+      } else {
+        return d.status;
+      }
+    }
+    if (selectedSlots.has(k)) return 'selected';
+    return getBaseStatus(dk, slot, court);
+  }
+
+  /* ── PENDING EXPIRY ── */
+  function setPending(k) {
+    const expiresAt = Date.now() + PENDING_MS;
+    bookingData[k] = { status: 'pending', expiresAt };
+    if (pendingTimers[k]) clearTimeout(pendingTimers[k]);
+    pendingTimers[k] = setTimeout(() => {
+      if (bookingData[k] && bookingData[k].expiresAt <= Date.now()) {
+        delete bookingData[k];
+        renderTable();
+        showToast('⏱ A pending slot has expired and is now available again.');
+      }
+    }, PENDING_MS);
+  }
+
+  /* ── SELECTION ── */
+  function toggleSlot(dk, slot, court) {
+    const k = slotKey(dk, slot, court);
+    if (selectedSlots.has(k)) {
+      selectedSlots.delete(k);
     } else {
-      return d.status;
+      selectedSlots.add(k);
     }
+    updateCartBar();
+    renderTable();
   }
-  if (selectedSlots.has(k)) return 'selected';
-  return getBaseStatus(dk, slot, court);
-}
 
-/* ── PENDING EXPIRY ── */
-function setPending(k) {
-  const expiresAt = Date.now() + PENDING_MS;
-  bookingData[k] = { status: 'pending', expiresAt };
-  if (pendingTimers[k]) clearTimeout(pendingTimers[k]);
-  pendingTimers[k] = setTimeout(() => {
-    if (bookingData[k] && bookingData[k].expiresAt <= Date.now()) {
-      delete bookingData[k];
-      renderTable();
-      showToast('⏱ A pending slot has expired and is now available again.');
+  function clearSelection() {
+    selectedSlots.clear();
+    updateCartBar();
+    renderTable();
+  }
+
+  function updateCartBar() {
+    const count = selectedSlots.size;
+    const total = [...selectedSlots].reduce((sum, k) => {
+      const parts = k.split('|');
+      return sum + getRate(parts[1]);
+    }, 0);
+    document.getElementById('cartCount').textContent = `${count} slot${count !== 1 ? 's' : ''} selected`;
+    document.getElementById('cartTotal').textContent = `₱${total.toLocaleString()}`;
+    document.getElementById('cartBar').classList.toggle('visible', count > 0);
+  }
+
+  /* ── HAMBURGER ── */
+  function toggleMenu() {
+    menuOpen = !menuOpen;
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('hamburgerBtn');
+    const icon = document.getElementById('hamburgerIcon');
+    menu.classList.toggle('open', menuOpen);
+    btn.setAttribute('aria-expanded', menuOpen);
+    icon.textContent = menuOpen ? '✕' : '☰';
+  }
+  document.addEventListener('click', function(e) {
+    if (!menuOpen) return;
+    const menu = document.getElementById('mobileMenu'), btn = document.getElementById('hamburgerBtn');
+    if (!menu.contains(e.target) && !btn.contains(e.target)) {
+      menuOpen = false; menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', false);
+      document.getElementById('hamburgerIcon').textContent = '☰';
     }
-  }, PENDING_MS);
-}
-
-/* ── SELECTION ── */
-function toggleSlot(dk, slot, court) {
-  const k = slotKey(dk, slot, court);
-  if (selectedSlots.has(k)) {
-    selectedSlots.delete(k);
-  } else {
-    selectedSlots.add(k);
-  }
-  updateCartBar();
-  renderTable();
-}
-
-function clearSelection() {
-  selectedSlots.clear();
-  updateCartBar();
-  renderTable();
-}
-
-function updateCartBar() {
-  const count = selectedSlots.size;
-  const total = [...selectedSlots].reduce((sum, k) => {
-    const parts = k.split('|');
-    return sum + getRate(parts[1]);
-  }, 0);
-  document.getElementById('cartCount').textContent = `${count} slot${count !== 1 ? 's' : ''} selected`;
-  document.getElementById('cartTotal').textContent = `₱${total.toLocaleString()}`;
-  document.getElementById('cartBar').classList.toggle('visible', count > 0);
-}
-
-/* ── HAMBURGER ── */
-function toggleMenu() {
-  menuOpen = !menuOpen;
-  const menu = document.getElementById('mobileMenu');
-  const btn = document.getElementById('hamburgerBtn');
-  const icon = document.getElementById('hamburgerIcon');
-  menu.classList.toggle('open', menuOpen);
-  btn.setAttribute('aria-expanded', menuOpen);
-  icon.textContent = menuOpen ? '✕' : '☰';
-}
-document.addEventListener('click', function(e) {
-  if (!menuOpen) return;
-  const menu = document.getElementById('mobileMenu'), btn = document.getElementById('hamburgerBtn');
-  if (!menu.contains(e.target) && !btn.contains(e.target)) {
-    menuOpen = false; menu.classList.remove('open');
-    btn.setAttribute('aria-expanded', false);
-    document.getElementById('hamburgerIcon').textContent = '☰';
-  }
-});
-
-/* ── CALENDAR ── */
-function renderCalendar() {
-  const grid = document.getElementById('calGrid');
-  document.getElementById('calMonthYear').textContent = `${MONTHS[viewMonth]} ${viewYear}`;
-  grid.innerHTML = '';
-  DAYS.forEach(d => { const el = document.createElement('div'); el.className = 'cal-dow'; el.textContent = d; grid.appendChild(el); });
-  const first = new Date(viewYear, viewMonth, 1).getDay();
-  const days = new Date(viewYear, viewMonth + 1, 0).getDate();
-  for (let i = 0; i < first; i++) { const el = document.createElement('div'); el.className = 'cal-day empty'; grid.appendChild(el); }
-  for (let d = 1; d <= days; d++) {
-    const el = document.createElement('div'); el.textContent = d;
-    const isPast = new Date(viewYear, viewMonth, d) < new Date(today.getFullYear(), today.getMonth(), today.getDate());
-    const isToday = d === today.getDate() && viewMonth === today.getMonth() && viewYear === today.getFullYear();
-    const isSel = d === selectedDate.getDate() && viewMonth === selectedDate.getMonth() && viewYear === selectedDate.getFullYear();
-    el.className = 'cal-day' + (isPast ? ' past' : '') + (isToday ? ' today' : '') + (isSel && !isToday ? ' selected' : '');
-    if (!isPast) el.addEventListener('click', () => { selectedDate = new Date(viewYear, viewMonth, d); renderCalendar(); renderTable(); });
-    grid.appendChild(el);
-  }
-}
-document.getElementById('prevBtn').addEventListener('click', () => { viewMonth--; if (viewMonth < 0) { viewMonth = 11; viewYear--; } renderCalendar(); });
-document.getElementById('nextBtn').addEventListener('click', () => { viewMonth++; if (viewMonth > 11) { viewMonth = 0; viewYear++; } renderCalendar(); });
-function goToToday() { selectedDate = new Date(today); viewYear = today.getFullYear(); viewMonth = today.getMonth(); renderCalendar(); renderTable(); }
-
-/* ── TABLE ── */
-function renderTable() {
-  const dk = dateKey(selectedDate);
-  document.getElementById('selectedDateLabel').textContent = selectedDate.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric', year:'numeric' });
-  const body = document.getElementById('slotBody');
-  body.innerHTML = '';
-  SLOTS.forEach(slot => {
-    const tr = document.createElement('tr');
-    const s1 = getStatus(dk, slot, 'c1'), s2 = getStatus(dk, slot, 'c2');
-    const td1 = slotCell(s1, slot, 'Court One', 'c1', dk);
-    const td2 = slotCell(s2, slot, 'Court Two', 'c2', dk);
-    tr.innerHTML = `<td class="time-cell">${slot}</td>`;
-    tr.appendChild(td1); tr.appendChild(td2);
-    body.appendChild(tr);
-  });
-}
-
-function slotCell(status, slot, court, courtKey, dk) {
-  const td = document.createElement('td');
-  td.style.padding = '8px 16px';
-  const btn = document.createElement('button');
-  btn.className = 'slot-btn';
-  if (status === 'available') {
-    btn.classList.add('slot-available');
-    btn.textContent = 'Available';
-    btn.onclick = () => toggleSlot(dk, slot, courtKey);
-  } else if (status === 'selected') {
-    btn.classList.add('slot-selected');
-    btn.textContent = '✓ Selected';
-    btn.onclick = () => toggleSlot(dk, slot, courtKey);
-  } else if (status === 'booked') {
-    btn.classList.add('slot-booked');
-    btn.textContent = 'Booked';
-    btn.disabled = true;
-  } else if (status === 'pending') {
-    btn.classList.add('slot-pending');
-    const k = slotKey(dk, slot, courtKey);
-    const d = bookingData[k];
-    let timerStr = '';
-    if (d && d.expiresAt) {
-      const rem = Math.max(0, Math.ceil((d.expiresAt - Date.now()) / 60000));
-      timerStr = `<span class="pending-timer">${rem}m left</span>`;
-    }
-    btn.innerHTML = `Pending${timerStr}`;
-    btn.disabled = true;
-  } else {
-    // seeded-pending
-    btn.classList.add('slot-pending');
-    btn.textContent = 'Pending';
-    btn.disabled = true;
-  }
-  td.appendChild(btn);
-  return td;
-}
-
-// Refresh timer displays every 30s
-setInterval(() => renderTable(), 30000);
-
-/* ── MODAL ── */
-function openModal() {
-  if (selectedSlots.size === 0) { showToast('⚠️ Please select at least one slot!'); return; }
-  const dk = dateKey(selectedDate);
-  document.getElementById('modalDate').textContent = selectedDate.toLocaleDateString('en-US', { weekday:'short', month:'long', day:'numeric', year:'numeric' });
-
-  const rows = document.getElementById('modalSlotRows');
-  rows.innerHTML = '';
-  let total = 0;
-  [...selectedSlots].forEach(k => {
-    const [,slot,courtKey] = k.split('|');
-    const courtName = courtKey === 'c1' ? 'Court 1' : 'Court 2';
-    const rate = getRate(slot);
-    total += rate;
-    const row = document.createElement('div');
-    row.className = 'slot-row';
-    row.innerHTML = `<div class="slot-row-info"><div class="slot-row-court">${courtName}</div><div class="slot-row-time">${slot}</div></div><div class="slot-row-price">₱${rate}</div>`;
-    rows.appendChild(row);
   });
 
-  document.getElementById('modalSlotCount').textContent = selectedSlots.size;
-  document.getElementById('modalTotal').textContent = `₱${total.toLocaleString()}`;
-  document.getElementById('bookingModal').classList.add('open');
-}
+  /* ── CALENDAR ── */
+  function renderCalendar() {
+    const grid = document.getElementById('calGrid');
+    document.getElementById('calMonthYear').textContent = `${MONTHS[viewMonth]} ${viewYear}`;
+    grid.innerHTML = '';
+    DAYS.forEach(d => { const el = document.createElement('div'); el.className = 'cal-dow'; el.textContent = d; grid.appendChild(el); });
+    const first = new Date(viewYear, viewMonth, 1).getDay();
+    const days = new Date(viewYear, viewMonth + 1, 0).getDate();
+    for (let i = 0; i < first; i++) { const el = document.createElement('div'); el.className = 'cal-day empty'; grid.appendChild(el); }
+    for (let d = 1; d <= days; d++) {
+      const el = document.createElement('div'); el.textContent = d;
+      const isPast = new Date(viewYear, viewMonth, d) < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+      const isToday = d === today.getDate() && viewMonth === today.getMonth() && viewYear === today.getFullYear();
+      const isSel = d === selectedDate.getDate() && viewMonth === selectedDate.getMonth() && viewYear === selectedDate.getFullYear();
+      el.className = 'cal-day' + (isPast ? ' past' : '') + (isToday ? ' today' : '') + (isSel && !isToday ? ' selected' : '');
+      if (!isPast) el.addEventListener('click', () => { selectedDate = new Date(viewYear, viewMonth, d); renderCalendar(); renderTable(); });
+      grid.appendChild(el);
+    }
+  }
+  document.getElementById('prevBtn').addEventListener('click', () => { viewMonth--; if (viewMonth < 0) { viewMonth = 11; viewYear--; } renderCalendar(); });
+  document.getElementById('nextBtn').addEventListener('click', () => { viewMonth++; if (viewMonth > 11) { viewMonth = 0; viewYear++; } renderCalendar(); });
+  function goToToday() { selectedDate = new Date(today); viewYear = today.getFullYear(); viewMonth = today.getMonth(); renderCalendar(); renderTable(); }
 
-function closeModal() { document.getElementById('bookingModal').classList.remove('open'); }
+  /* ── TABLE ── */
+  function renderTable() {
+    const dk = dateKey(selectedDate);
+    document.getElementById('selectedDateLabel').textContent = selectedDate.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric', year:'numeric' });
+    const body = document.getElementById('slotBody');
+    body.innerHTML = '';
+    SLOTS.forEach(slot => {
+      const tr = document.createElement('tr');
+      const s1 = getStatus(dk, slot, 'c1'), s2 = getStatus(dk, slot, 'c2');
+      const td1 = slotCell(s1, slot, 'Court One', 'c1', dk);
+      const td2 = slotCell(s2, slot, 'Court Two', 'c2', dk);
+      tr.innerHTML = `<td class="time-cell">${slot}</td>`;
+      tr.appendChild(td1); tr.appendChild(td2);
+      body.appendChild(tr);
+    });
+  }
 
-function confirmBooking() {
-  const fb = document.getElementById('fbName').value.trim();
-  const ph = document.getElementById('phone').value.trim();
-  if (!fb) { showToast('⚠️ Please enter your Facebook Profile Name!'); return; }
-  if (!ph || ph.replace(/\s/g,'').length < 9) { showToast('⚠️ Please enter a valid phone number!'); return; }
+  function slotCell(status, slot, court, courtKey, dk) {
+    const td = document.createElement('td');
+    td.style.padding = '8px 16px';
+    const btn = document.createElement('button');
+    btn.className = 'slot-btn';
+    if (status === 'available') {
+      btn.classList.add('slot-available');
+      btn.textContent = 'Available';
+      btn.onclick = () => toggleSlot(dk, slot, courtKey);
+    } else if (status === 'selected') {
+      btn.classList.add('slot-selected');
+      btn.textContent = '✓ Selected';
+      btn.onclick = () => toggleSlot(dk, slot, courtKey);
+    } else if (status === 'booked') {
+      btn.classList.add('slot-booked');
+      btn.textContent = 'Booked';
+      btn.disabled = true;
+    } else if (status === 'pending') {
+      btn.classList.add('slot-pending');
+      const k = slotKey(dk, slot, courtKey);
+      const d = bookingData[k];
+      let timerStr = '';
+      if (d && d.expiresAt) {
+        const rem = Math.max(0, Math.ceil((d.expiresAt - Date.now()) / 60000));
+        timerStr = `<span class="pending-timer">${rem}m left</span>`;
+      }
+      btn.innerHTML = `Pending${timerStr}`;
+      btn.disabled = true;
+    } else {
+      // seeded-pending
+      btn.classList.add('slot-pending');
+      btn.textContent = 'Pending';
+      btn.disabled = true;
+    }
+    td.appendChild(btn);
+    return td;
+  }
 
-  // Mark all selected as pending with 30min timer
-  [...selectedSlots].forEach(k => setPending(k));
-  selectedSlots.clear();
+  // Refresh timer displays every 30s
+  setInterval(() => renderTable(), 30000);
 
-  closeModal();
-  updateCartBar();
+  /* ── MODAL ── */
+  function openModal() {
+    if (selectedSlots.size === 0) { showToast('⚠️ Please select at least one slot!'); return; }
+    const dk = dateKey(selectedDate);
+    document.getElementById('modalDate').textContent = selectedDate.toLocaleDateString('en-US', { weekday:'short', month:'long', day:'numeric', year:'numeric' });
+
+    const rows = document.getElementById('modalSlotRows');
+    rows.innerHTML = '';
+    let total = 0;
+    [...selectedSlots].forEach(k => {
+      const [,slot,courtKey] = k.split('|');
+      const courtName = courtKey === 'c1' ? 'Court 1' : 'Court 2';
+      const rate = getRate(slot);
+      total += rate;
+      const row = document.createElement('div');
+      row.className = 'slot-row';
+      row.innerHTML = `<div class="slot-row-info"><div class="slot-row-court">${courtName}</div><div class="slot-row-time">${slot}</div></div><div class="slot-row-price">₱${rate}</div>`;
+      rows.appendChild(row);
+    });
+
+    document.getElementById('modalSlotCount').textContent = selectedSlots.size;
+    document.getElementById('modalTotal').textContent = `₱${total.toLocaleString()}`;
+    document.getElementById('bookingModal').classList.add('open');
+  }
+
+  function closeModal() { document.getElementById('bookingModal').classList.remove('open'); }
+
+  function confirmBooking() {
+    const fb = document.getElementById('fbName').value.trim();
+    const ph = document.getElementById('phone').value.trim();
+    if (!fb) { showToast('⚠️ Please enter your Facebook Profile Name!'); return; }
+    if (!ph || ph.replace(/\s/g,'').length < 9) { showToast('⚠️ Please enter a valid phone number!'); return; }
+
+    // Mark all selected as pending with 30min timer
+    [...selectedSlots].forEach(k => setPending(k));
+    selectedSlots.clear();
+
+    closeModal();
+    updateCartBar();
+    renderTable();
+    document.getElementById('fbName').value = '';
+    document.getElementById('phone').value = '';
+    showToast('✅ Booking submitted! Complete payment within 30 minutes.', true);
+  }
+
+  document.getElementById('bookingModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+
+  /* ── TOAST ── */
+  let toastTimer;
+  function showToast(msg, success = false) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast show' + (success ? ' success' : '');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
+  }
+
+  renderCalendar();
   renderTable();
-  document.getElementById('fbName').value = '';
-  document.getElementById('phone').value = '';
-  showToast('✅ Booking submitted! Complete payment within 30 minutes.', true);
-}
-
-document.getElementById('bookingModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
-
-/* ── TOAST ── */
-let toastTimer;
-function showToast(msg, success = false) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast show' + (success ? ' success' : '');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
-}
-
-renderCalendar();
-renderTable();
-</script>
-</body>
-</html>
+  </script>
+  </body>
+  </html>
